@@ -4,64 +4,73 @@ view: rldeav {
     ;;
 
   dimension: metric_code {
-    hidden: yes
+    order_by_field: metric_order
+    group_label: "Question Information"
     type: string
     sql: ${TABLE}.metric_code ;;
   }
 
   dimension: metric_id {
+    order_by_field: metric_order
+    group_label: "Question Information"
     type: number
-    hidden: yes
-    primary_key: yes
     sql: ${TABLE}.metricID ;;
   }
 
   dimension: metric_label {
-    hidden: yes
+    order_by_field: metric_order
+    group_label: "Question Information"
     type: string
     sql: ${TABLE}.metric_label ;;
   }
 
   dimension: metric_order {
+    group_label: "Question Information"
     hidden: yes
     type: number
     sql: ${TABLE}.metric_order ;;
   }
 
   dimension: respondent_serial {
-#     primary_key: yes
+    group_label: "Question Information"
+    primary_key: yes
     type: number
     hidden: yes
     sql: ${TABLE}.respondent_serial ;;
   }
 
   dimension: response_code {
+    order_by_field: response_order
+    group_label: "Question Information"
     type: string
-    hidden: yes
     sql: ${TABLE}.response_code ;;
   }
 
   dimension: response_id {
+    order_by_field: response_order
+    group_label: "Question Information"
     type: number
-    hidden: yes
     sql: CAST(${TABLE}.responseID  AS INT64);;
   }
 
   dimension: response_label {
+    order_by_field: response_order
+    group_label: "Question Information"
     type: string
-    hidden: yes
     sql: ${TABLE}.response_label ;;
   }
 
   dimension: response_order {
+    group_label: "Question Information"
     type: number
     hidden: yes
     sql: ${TABLE}.response_order ;;
   }
 
   dimension: vtype {
+    group_label: "Question Information"
     type: string
-    hidden: yes
+    label: "V Type"
     sql: ${TABLE}.vtype ;;
   }
 

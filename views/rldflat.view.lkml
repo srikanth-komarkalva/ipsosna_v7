@@ -1,7 +1,48 @@
 view: rldflat {
   label: "Demographics"
-  sql_table_name: `GPay.RLDflat`
-    ;;
+  derived_table: {
+    datagroup_trigger: ipsosna_v7_default_datagroup
+    partition_keys: ["dummydate"]
+    cluster_keys: ["IN01SG","IN02REGION1"]
+    sql:
+    SELECT respondent_serial,
+    wm3,
+    wm3_comp_incomp,
+    IN01SG,
+    (SELECT DISTINCT response_label FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDResponses` resp
+    INNER JOIN `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDMetrics` metric ON resp.metricid= metric.metricid
+    WHERE metric_code = 'IN01SG' AND resp.response_code = flat.IN01SG) AS IN01_SG_Label,
+    IN02REGION1,
+    (SELECT DISTINCT response_label FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDResponses` resp
+    INNER JOIN `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDMetrics` metric ON resp.metricid= metric.metricid
+    WHERE metric_code = 'IN02REGION1' AND resp.response_code = flat.IN02REGION1) AS IN02REGION1_Label,
+    IN02STDREGION,
+    (SELECT DISTINCT response_label FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDResponses` resp
+    INNER JOIN `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDMetrics` metric ON resp.metricid= metric.metricid
+    WHERE metric_code = 'IN02STDREGION' AND resp.response_code = flat.IN02STDREGION) AS IN02STDREGION_Label,
+    QSMARTPHONE_USAGE,
+    (SELECT DISTINCT response_label FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDResponses` resp
+    INNER JOIN `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDMetrics` metric ON resp.metricid= metric.metricid
+    WHERE metric_code = 'QSMARTPHONE_USAGE' AND resp.response_code = flat.QSMARTPHONE_USAGE) AS QSMARTPHONE_USAGE_Label,
+    QUOTAGERANGE,
+    (SELECT DISTINCT response_label FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDResponses` resp
+    INNER JOIN `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDMetrics` metric ON resp.metricid= metric.metricid
+    WHERE metric_code = 'QUOTAGERANGE' AND resp.response_code = flat.QUOTAGERANGE) AS QUOTAGERANGE_Label,
+    resp_age,
+    (SELECT DISTINCT response_label FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDResponses` resp
+    INNER JOIN `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDMetrics` metric ON resp.metricid= metric.metricid
+    WHERE metric_code = 'resp_age' AND resp.response_code = flat.resp_age) AS resp_age_Label,
+    resp_gender,
+    (SELECT DISTINCT response_label FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDResponses` resp
+    INNER JOIN `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDMetrics` metric ON resp.metricid= metric.metricid
+    WHERE metric_code = 'resp_gender' AND resp.response_code = flat.resp_gender) AS resp_gender_Label,
+    WaveSID,
+    (SELECT DISTINCT response_label FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDResponses` resp
+    INNER JOIN `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDMetrics` metric ON resp.metricid= metric.metricid
+    WHERE metric_code = 'WaveSID' AND resp.response_code = flat.WaveSID) AS WaveSID_Label,
+    cast('2000-01-01' as date) as dummydate
+    FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDflat` flat ;;
+}
 
 #Defining parameters for Dynamic column selection in Cross tab charts
   parameter: attribute_selector1 {
@@ -11,42 +52,42 @@ view: rldflat {
 
     allowed_value: {
       label: "Age"
-      value: "resp_age"
+      value: "resp_age_Label"
     }
 
     allowed_value: {
       label: "Gender"
-      value: "resp_gender"
+      value: "resp_gender_Label"
     }
 
     allowed_value: {
       label: "Wave"
-      value: "wave_sid"
+      value: "WaveSID_Label"
     }
 
     allowed_value: {
       label: "Smartphone Usage"
-      value: "qsmartphone_usage"
+      value: "QSMARTPHONE_USAGE_Label"
     }
 
     allowed_value: {
-      label: "Quota Range"
-      value: "quotagerange"
+      label: "Quota Age Range"
+      value: "QUOTAGERANGE_Label"
     }
 
     allowed_value: {
-      label: "in01_sg"
-      value: "in01_sg"
+      label: "Sg Zone"
+      value: "IN01_SG_Label"
     }
 
     allowed_value: {
-      label: "Region 1"
-      value: "in02_region1"
+      label: "Region"
+      value: "IN02REGION1_Label"
     }
 
     allowed_value: {
-      label: "Region 2"
-      value: "in02_stdregion"
+      label: "STD Region"
+      value: "IN02STDREGION_Label"
     }
   }
 
@@ -55,44 +96,44 @@ view: rldflat {
     label: "Banner Selector 2"
     type: unquoted
 
-    allowed_value: {
+     allowed_value: {
       label: "Age"
-      value: "resp_age"
+      value: "resp_age_Label"
     }
 
     allowed_value: {
       label: "Gender"
-      value: "resp_gender"
+      value: "resp_gender_Label"
     }
 
     allowed_value: {
       label: "Wave"
-      value: "wave_sid"
+      value: "WaveSID_Label"
     }
 
     allowed_value: {
       label: "Smartphone Usage"
-      value: "qsmartphone_usage"
+      value: "QSMARTPHONE_USAGE_Label"
     }
 
     allowed_value: {
-      label: "Quota Range"
-      value: "quotagerange"
+      label: "Quota Age Range"
+      value: "QUOTAGERANGE_Label"
     }
 
     allowed_value: {
-      label: "in01_sg"
-      value: "in01_sg"
+      label: "Sg Zone"
+      value: "IN01_SG_Label"
     }
 
     allowed_value: {
-      label: "Region 1"
-      value: "in02_region1"
+      label: "Region"
+      value: "IN02REGION1_Label"
     }
 
     allowed_value: {
-      label: "Region 2"
-      value: "in02_stdregion"
+      label: "STD Region"
+      value: "IN02STDREGION_Label"
     }
   }
 
@@ -117,8 +158,8 @@ view: rldflat {
   dimension: attribute_selector1_sort {
     hidden: yes
     sql:
-    {% if attribute_selector1._parameter_value == 'wave_sid' %}
-      ${wave_sid}
+    {% if attribute_selector1._parameter_value == 'wave_sid_Label' %}
+      ${wave_sid_label}
     {% else %}
       ${attribute_selector1_dim}
     {% endif %};;
@@ -127,8 +168,8 @@ view: rldflat {
   dimension: attribute_selector2_sort {
     hidden: yes
     sql:
-    {% if attribute_selector2._parameter_value == 'wave_sid' %}
-      ${wave_sid}
+    {% if attribute_selector2._parameter_value == 'wave_sid_Label' %}
+      ${wave_sid_label}
     {% else %}
       ${attribute_selector2_dim}
     {% endif %};;
@@ -137,43 +178,99 @@ view: rldflat {
   dimension: in01_sg {
     group_label: "Demographic Fields"
     type: string
+    hidden: yes
     sql: ${TABLE}.IN01SG ;;
+  }
+
+  dimension: in01_sg_label {
+    label: "Sg Zone"
+    group_label: "Demographic Fields"
+    type: string
+    sql: ${TABLE}.IN01_SG_Label ;;
   }
 
   dimension: in02_region1 {
     group_label: "Demographic Fields"
     type: string
+    hidden: yes
     sql: ${TABLE}.IN02REGION1 ;;
+  }
+
+  dimension: in02_region1_label {
+    label: "Region"
+    group_label: "Demographic Fields"
+    type: string
+    sql: ${TABLE}.IN02REGION1_Label ;;
   }
 
   dimension: in02_stdregion {
     group_label: "Demographic Fields"
     type: string
+    hidden: yes
     sql: ${TABLE}.IN02STDREGION ;;
+  }
+
+  dimension: in02_stdregion_label {
+    label: "STD Region"
+    group_label: "Demographic Fields"
+    type: string
+    sql: ${TABLE}.IN02STDREGION_Label ;;
   }
 
   dimension: qsmartphone_usage {
     group_label: "Demographic Fields"
     type: string
+    hidden: yes
     sql: ${TABLE}.QSMARTPHONE_USAGE ;;
+  }
+
+  dimension: qsmartphone_usage_label {
+    label: "Smartphone Usage"
+    group_label: "Demographic Fields"
+    type: string
+    sql: ${TABLE}.QSMARTPHONE_USAGE_Label ;;
   }
 
   dimension: quotagerange {
     group_label: "Demographic Fields"
     type: string
+    hidden: yes
     sql: ${TABLE}.QUOTAGERANGE ;;
+  }
+
+  dimension: quotagerange_label {
+    label: "Quota Age Range"
+    group_label: "Demographic Fields"
+    type: string
+    sql: ${TABLE}.QUOTAGERANGE_Label ;;
   }
 
   dimension: resp_age {
     group_label: "Demographic Fields"
     type: string
+    hidden: yes
     sql: ${TABLE}.resp_age ;;
+  }
+
+  dimension: resp_age_label {
+    label: "Age"
+    group_label: "Demographic Fields"
+    type: string
+    sql: ${TABLE}.resp_age_Label ;;
   }
 
   dimension: resp_gender {
     group_label: "Demographic Fields"
     type: string
+    hidden: yes
     sql: ${TABLE}.resp_gender ;;
+  }
+
+  dimension: resp_gender_label {
+    label: "Gender"
+    group_label: "Demographic Fields"
+    type: string
+    sql: ${TABLE}.resp_gender_Label ;;
   }
 
   dimension: respondent_serial {
@@ -187,7 +284,15 @@ view: rldflat {
   dimension: wave_sid {
     group_label: "Demographic Fields"
     type: string
+    hidden: yes
     sql: ${TABLE}.WaveSID ;;
+  }
+
+  dimension: wave_sid_label {
+    label: "Wave"
+    group_label: "Demographic Fields"
+    type: string
+    sql: ${TABLE}.WaveSID_Label ;;
   }
 
   dimension: wm3 {
@@ -210,87 +315,87 @@ view: rldflat {
     type: number
     hidden: yes
     sql:  sum(${wtct}) OVER ( PARTITION BY
-          -- all rldmetrics fields
-              {% if rldmetrics.metric_id._is_selected %} ${rldmetrics.metric_id} , {% endif %}
-              {% if rldmetrics.metric_code._is_selected %} ${rldmetrics.metric_code} , {% endif %}
-              {% if rldmetrics.metric_label._is_selected %} ${rldmetrics.metric_label} , {% endif %}
+          -- all rldeav fields
+              {% if rldeav.metric_id._is_selected %} ${rldeav.metric_id} , {% endif %}
+              {% if rldeav.metric_code._is_selected %} ${rldeav.metric_code} , {% endif %}
+              {% if rldeav.metric_label._is_selected %} ${rldeav.metric_label} , {% endif %}
 
           -- all rldflat fields
-              {% if attribute_selector1._parameter_value == 'in01_sg' and attribute_selector1_dim._is_selected %}
-                      ${in01_sg} ,
-              {% elsif attribute_selector2._parameter_value == 'in01_sg' and attribute_selector2_dim._is_selected %}
-                      ${in01_sg} ,
-              {% elsif in01_sg._is_selected %}
-                      ${in01_sg} ,
+              {% if attribute_selector1._parameter_value == 'IN01_SG_Label' and attribute_selector1_dim._is_selected %}
+                      ${in01_sg_label} ,
+              {% elsif attribute_selector2._parameter_value == 'IN01_SG_Label' and attribute_selector2_dim._is_selected %}
+                      ${in01_sg_label} ,
+              {% elsif in01_sg_label._is_selected %}
+                      ${in01_sg_label} ,
               {% endif %}
 
-              {% if attribute_selector1._parameter_value == 'in02_region1' and attribute_selector1_dim._is_selected %}
-                      ${in02_region1} ,
-              {% elsif attribute_selector2._parameter_value == 'in02_region1' and attribute_selector2_dim._is_selected %}
-                      ${in02_region1} ,
-              {% elsif in02_region1._is_selected %}
-                      ${in02_region1} ,
+              {% if attribute_selector1._parameter_value == 'IN02REGION1_Label' and attribute_selector1_dim._is_selected %}
+                      ${in02_region1_label} ,
+              {% elsif attribute_selector2._parameter_value == 'IN02REGION1_Label' and attribute_selector2_dim._is_selected %}
+                      ${in02_region1_label} ,
+              {% elsif in02_region1_label._is_selected %}
+                      ${in02_region1_label} ,
               {% endif %}
 
-              {% if attribute_selector1._parameter_value == 'in02_stdregion' and attribute_selector1_dim._is_selected %}
-                      ${in02_stdregion} ,
-              {% elsif attribute_selector2._parameter_value == 'in02_stdregion' and attribute_selector2_dim._is_selected %}
-                      ${in02_stdregion} ,
-              {% elsif in02_stdregion._is_selected %}
-                      ${in02_stdregion} ,
+              {% if attribute_selector1._parameter_value == 'IN02STDREGION_Label' and attribute_selector1_dim._is_selected %}
+                      ${in02_stdregion_label} ,
+              {% elsif attribute_selector2._parameter_value == 'IN02STDREGION_Label' and attribute_selector2_dim._is_selected %}
+                      ${in02_stdregion_label} ,
+              {% elsif in02_stdregion_label._is_selected %}
+                      ${in02_stdregion_label} ,
               {% endif %}
 
-              {% if attribute_selector1._parameter_value == 'resp_age' and attribute_selector1_dim._is_selected %}
-                      ${resp_age} ,
-              {% elsif attribute_selector2._parameter_value == 'resp_age' and attribute_selector2_dim._is_selected %}
-                      ${resp_age} ,
-              {% elsif resp_age._is_selected %}
-                      ${resp_age} ,
+              {% if attribute_selector1._parameter_value == 'resp_age_Label' and attribute_selector1_dim._is_selected %}
+                      ${resp_age_label} ,
+              {% elsif attribute_selector2._parameter_value == 'resp_age_Label' and attribute_selector2_dim._is_selected %}
+                      ${resp_age_label} ,
+              {% elsif resp_age_label._is_selected %}
+                      ${resp_age_label} ,
               {% endif %}
 
-              {% if attribute_selector1._parameter_value == 'resp_gender' and attribute_selector1_dim._is_selected %}
-                      ${resp_gender} ,
-              {% elsif attribute_selector2._parameter_value == 'resp_gender' and attribute_selector2_dim._is_selected %}
-                      ${resp_gender} ,
-              {% elsif resp_gender._is_selected %}
-                      ${resp_gender} ,
+              {% if attribute_selector1._parameter_value == 'resp_gender_Label' and attribute_selector1_dim._is_selected %}
+                      ${resp_gender_label} ,
+              {% elsif attribute_selector2._parameter_value == 'resp_gender_Label' and attribute_selector2_dim._is_selected %}
+                      ${resp_gender_label} ,
+              {% elsif resp_gender_label._is_selected %}
+                      ${resp_gender_label} ,
               {% endif %}
 
-              {% if attribute_selector1._parameter_value == 'qsmartphone_usage' and attribute_selector1_dim._is_selected %}
-                      ${qsmartphone_usage} ,
-              {% elsif attribute_selector2._parameter_value == 'qsmartphone_usage' and attribute_selector2_dim._is_selected %}
-                      ${qsmartphone_usage} ,
-              {% elsif qsmartphone_usage._is_selected %}
-                      ${qsmartphone_usage} ,
+              {% if attribute_selector1._parameter_value == 'QSMARTPHONE_USAGE_Label' and attribute_selector1_dim._is_selected %}
+                      ${qsmartphone_usage_label} ,
+              {% elsif attribute_selector2._parameter_value == 'QSMARTPHONE_USAGE_Label' and attribute_selector2_dim._is_selected %}
+                      ${qsmartphone_usage_label} ,
+              {% elsif qsmartphone_usage_label._is_selected %}
+                      ${qsmartphone_usage_label} ,
               {% endif %}
 
-              {% if attribute_selector1._parameter_value == 'quotagerange' and attribute_selector1_dim._is_selected %}
-                      ${quotagerange} ,
-              {% elsif attribute_selector2._parameter_value == 'quotagerange' and attribute_selector2_dim._is_selected %}
-                      ${quotagerange} ,
-              {% elsif quotagerange._is_selected %}
-                      ${quotagerange} ,
+              {% if attribute_selector1._parameter_value == 'QUOTAGERANGE_Label' and attribute_selector1_dim._is_selected %}
+                      ${quotagerange_label} ,
+              {% elsif attribute_selector2._parameter_value == 'QUOTAGERANGE_Label' and attribute_selector2_dim._is_selected %}
+                      ${quotagerange_label} ,
+              {% elsif quotagerange_label._is_selected %}
+                      ${quotagerange_label} ,
               {% endif %}
 
-              {% if attribute_selector1._parameter_value == 'wave_sid' and attribute_selector1_dim._is_selected %}
-                      ${wave_sid} ,
-              {% elsif attribute_selector2._parameter_value == 'wave_sid' and attribute_selector2_dim._is_selected %}
-                      ${wave_sid} ,
-              {% elsif wave_sid._is_selected %}
-                      ${wave_sid} ,
+              {% if attribute_selector1._parameter_value == 'WaveSID_Label' and attribute_selector1_dim._is_selected %}
+                      ${wave_sid_label} ,
+              {% elsif attribute_selector2._parameter_value == 'WaveSID_Label' and attribute_selector2_dim._is_selected %}
+                      ${wave_sid_label} ,
+              {% elsif wave_sid_label._is_selected %}
+                      ${wave_sid_label} ,
               {% endif %}
-
               1)
               ;;
   }
 
   measure: percent_weight {
+    description: "Percent of Base"
     type: number
     group_label: "Weight Metrics"
     label: "Percent of Base"
-    sql: ${wtct}/${sum_wtct_subtotal} ;;
+    sql: ${wtct}/NULLIF(${sum_wtct_subtotal},0) ;;
     drill_fields: [detail*]
-    value_format_name: percent_0
+    value_format_name: percent_2
   }
 
   parameter: significance_dropdown {
@@ -310,18 +415,15 @@ view: rldflat {
 
   #Significance Filter
   dimension: significance_dropdown_dim {
-#     hidden: yes
   label: "Significance"
   group_label: "Parameters"
   type: string
   sql: {% parameter significance_dropdown  %};;
-  #
 }
 
 parameter: confidence_interval {
   label: "Confidence Interval Parameter"
   description: "Choose Confidence % for crosstabs"
-#     hidden: yes
   type: string
   allowed_value: {
     label: "85%"
@@ -345,13 +447,12 @@ parameter: confidence_interval {
 dimension: confidence_interval_dim {
   label: "Confidence Interval"
   group_label: "Parameters"
-#     hidden: yes
   type: string
   sql:  {% parameter confidence_interval  %};;
 }
 
 set: detail {
-  fields: [in01_sg,in02_region1,in02_stdregion,resp_age,resp_gender,respondent_serial,wtct]
+  fields: [in01_sg_label,in02_region1_label,in02_stdregion_label,resp_age_label,resp_gender_label,wtct]
 }
 
   dimension: wm3_comp_incomp {
