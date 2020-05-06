@@ -25,16 +25,6 @@ view: rldeav_filter1 {
     sql: ${TABLE}.metric_code ;;
   }
 
-#   filter: metric_code_1 {
-#     type: string
-#     suggestable: yes
-#     suggest_dimension: metric_code
-#     suggest_explore: gpay_crosstab
-#     sql: ${TABLE}.metric_code ;;
-#     group_label: "Filter Dimensions set 1"
-#     label: "Metric Code 1"
-#   }
-
   dimension: metric_label {
     order_by_field: metric_order
     group_label: "Filter Dimensions set 1"
