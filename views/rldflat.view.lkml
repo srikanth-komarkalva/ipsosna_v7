@@ -317,7 +317,7 @@ view: rldflat {
     sql:  sum(${wtct}) OVER ( PARTITION BY
           -- all rldeav fields
               {% if rldeav.metric_id._is_selected %} ${rldeav.metric_id} , {% endif %}
-              {% if rldeav.metric_code._is_selected %} ${rldeav.metric_code} , {% endif %}
+              --{% if rldeav.metric_code._is_selected %} ${rldeav.metric_code} , {% endif %}
               {% if rldeav.metric_label._is_selected %} ${rldeav.metric_label} , {% endif %}
 
           -- all rldflat fields

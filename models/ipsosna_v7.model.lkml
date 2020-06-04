@@ -44,3 +44,16 @@ explore: gpay_crosstab {
     sql_on: ${rldeav_filter3.respondent_serial} = ${rldflat.respondent_serial} ;;
   }
 }
+
+explore: gpay_funnel {
+  label: "Funnel for Google Pay"
+  view_name: bases
+  view_label: "Funnel for Google Pay"
+
+  join: counts {
+    view_label: "Funnel for Google Pay"
+    relationship: many_to_one
+    type: left_outer
+    sql_on: ${counts.metric_id} = ${bases.metric_id} AND ${counts.wave_sid} = ${bases.wave_sid};;
+  }
+}
