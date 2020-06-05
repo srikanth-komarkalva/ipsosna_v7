@@ -37,19 +37,19 @@ view: bases {
     case: {
     when: {
       sql: ${TABLE}.metric_code = "Q2" ;;
-      label: "Awareness"
+      label: "Awareness (Q2)"
     }
     when: {
       sql: ${TABLE}.metric_code = "Q3" ;;
-      label: "Consideration"
+      label: "Consideration (Q3)"
     }
     when: {
       sql: ${TABLE}.metric_code = "Q4" ;;
-      label: "Intent"
+      label: "Intent (Q4)"
     }
     when: {
       sql: ${TABLE}.metric_code = "Q4_TRUST" ;;
-      label: "Action"
+      label: "Trust (Q4)"
     }
   }
   }
