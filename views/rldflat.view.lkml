@@ -159,7 +159,7 @@ view: rldflat {
     hidden: yes
     sql:
     {% if attribute_selector1._parameter_value == 'WaveSID_Label' %}
-      ${wave_sid_label}
+      ${wave_date}
     {% else %}
       ${attribute_selector1_dim}
     {% endif %};;
@@ -169,7 +169,7 @@ view: rldflat {
     hidden: yes
     sql:
     {% if attribute_selector2._parameter_value == 'WaveSID_Label' %}
-      ${wave_sid_label}
+      ${wave_date}
     {% else %}
       ${attribute_selector2_dim}
     {% endif %};;
