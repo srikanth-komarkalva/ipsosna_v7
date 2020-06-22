@@ -356,8 +356,8 @@ view: rldflat {
   dimension: wave_date {
     label: "Wave (Date)"
     group_label: "Demographic Fields"
-    type: string
-    sql: date(${wave_year},${wave_month},${wave_day}) ;;
+    type: date
+    sql: CAST(date(${wave_year},${wave_month},${wave_day}) as DATE) ;;
   }
 
   dimension: wm3 {
