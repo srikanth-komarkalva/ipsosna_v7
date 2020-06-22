@@ -25,8 +25,8 @@ explore: gpay_crosstab {
 
   join: rldeav_filter1 {
     view_label: "Crosstab for Google Pay"
-    relationship: one_to_one
-    type: inner
+    relationship: many_to_one
+    type: left_outer
     sql_on: ${rldeav_filter1.respondent_serial} = ${rldflat.respondent_serial} ;;
   }
 
@@ -56,4 +56,91 @@ explore: gpay_funnel {
     type: left_outer
     sql_on: ${counts.metric_id} = ${bases.metric_id} AND ${counts.wave_sid} = ${bases.wave_sid};;
   }
+
+  join: wave_labels {
+    view_label: "Funnel for Google Pay"
+    relationship: one_to_one
+    type: inner
+    sql_on: ${wave_labels.response_code} = ${bases.wave_sid} ;;
+  }
 }
+
+explore: gpay_crosstab_v2 {
+  label: "Crosstab for GPay v2"
+  view_name: bases_v2
+  view_label: "Crosstab for GPay v2"
+
+  join: counts_v2 {
+    view_label: "Crosstab for GPay v2"
+    relationship: many_to_one
+    type: left_outer
+    sql_on: ${counts_v2.metric_id} = ${bases_v2.metric_id}
+        AND ${counts_v2.resp_gender} = ${bases_v2.resp_gender}
+        AND ${counts_v2.QuotAgeRange} = ${bases_v2.quotagerange}
+       ;;
+  }
+
+  join: rldeav_filter1 {
+    view_label: "Crosstab for Google Pay"
+    relationship: one_to_one
+    type: inner
+    required_joins: [counts_v2]
+    sql_on: ${rldeav_filter1.respondent_serial} = ${bases_v2.respondent_serial};;
+  }
+
+  join: rldeav_filter2 {
+    view_label: "Crosstab for Google Pay"
+    relationship: one_to_one
+    type: inner
+    required_joins: [counts_v2]
+    sql_on: ${rldeav_filter2.respondent_serial} = ${bases_v2.respondent_serial};;
+  }
+
+  join: rldeav_filter3 {
+    view_label: "Crosstab for Google Pay"
+    relationship: one_to_one
+    type: inner
+    required_joins: [counts_v2]
+    sql_on: ${rldeav_filter3.respondent_serial} = ${bases_v2.respondent_serial};;
+  }
+}
+
+# explore: gpay_crosstab_counts {
+#   label: "Crosstab for GPay v2"
+#   view_name: counts_v2
+#   view_label: "Crosstab for GPay v2"
+#
+#   join: bases_v2 {
+#     view_label: "Crosstab for GPay v2"
+#     relationship: one_to_many
+#     type: full_outer
+#     sql_on: ${counts_v2.metric_id} = ${bases_v2.metric_id}
+#         AND ${counts_v2.resp_gender} = ${bases_v2.resp_gender}
+#         AND ${counts_v2.QuotAgeRange} = ${bases_v2.QuotAgeRange}
+#        ;;
+#   }
+#
+#   join: rldeav_filter1 {
+#     view_label: "Crosstab for Google Pay"
+#     relationship: one_to_one
+#     type: inner
+# #     required_joins: [counts_v2]
+#     sql_on: ${rldeav_filter1.respondent_serial} = ${counts_v2.respondent_serial};;
+#   }
+#
+#   join: rldeav_filter2 {
+#     view_label: "Crosstab for Google Pay"
+#     relationship: one_to_one
+#     type: inner
+# #     required_joins: [counts_v2]
+#     sql_on: ${rldeav_filter2.respondent_serial} = ${counts_v2.respondent_serial};;
+#   }
+#
+#   join: rldeav_filter3 {
+#     view_label: "Crosstab for Google Pay"
+#     relationship: one_to_one
+#     type: inner
+# #     required_joins: [counts_v2]
+#     sql_on: ${rldeav_filter3.respondent_serial} = ${counts_v2.respondent_serial};;
+#   }
+# }

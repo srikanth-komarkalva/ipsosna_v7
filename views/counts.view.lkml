@@ -38,6 +38,16 @@ view: counts {
     sql: ${TABLE}.response_label ;;
   }
 
+  dimension: response_label_ {
+    type: string
+    label: "Response Label New"
+    order_by_field: response_order
+    sql: CASE ${response_label}
+          WHEN 'Gpay' THEN 'Google Pay'
+          ELSE ${response_label}
+          END;;
+  }
+
   dimension: response_order {
     type: number
     hidden: yes

@@ -1,4 +1,4 @@
-view: rldflat {
+view: rldflat_v2 {
   label: "Demographics"
   derived_table: {
     datagroup_trigger: ipsosna_v7_default_datagroup
@@ -42,7 +42,7 @@ view: rldflat {
     WHERE metric_code = 'WaveSID' AND resp.response_code = flat.WaveSID) AS WaveSID_Label,
     cast('2000-01-01' as date) as dummydate
     FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDflat` flat ;;
-}
+  }
 
 #Defining parameters for Dynamic column selection in Cross tab charts
   parameter: attribute_selector1 {
@@ -96,7 +96,7 @@ view: rldflat {
     label: "Banner Selector 2"
     type: unquoted
 
-     allowed_value: {
+    allowed_value: {
       label: "Age"
       value: "resp_age_Label"
     }
@@ -158,7 +158,7 @@ view: rldflat {
   dimension: attribute_selector1_sort {
     hidden: yes
     sql:
-    {% if attribute_selector1._parameter_value == 'WaveSID_Label' %}
+    {% if attribute_selector1._parameter_value == 'wave_sid_Label' %}
       ${wave_sid_label}
     {% else %}
       ${attribute_selector1_dim}
@@ -168,7 +168,7 @@ view: rldflat {
   dimension: attribute_selector2_sort {
     hidden: yes
     sql:
-    {% if attribute_selector2._parameter_value == 'WaveSID_Label' %}
+    {% if attribute_selector2._parameter_value == 'wave_sid_Label' %}
       ${wave_sid_label}
     {% else %}
       ${attribute_selector2_dim}
@@ -345,12 +345,12 @@ view: rldflat {
     group_label: "Demographic Fields"
     type: number
     sql: CAST(CASE ${wave_day_part}
-    WHEN 'W1' THEN 1
-    WHEN 'W2' THEN 15
-    WHEN 'Ne' THEN 1
-    WHEN 'Pa' THEN 1
-    ELSE 1
-    END AS INT64) ;;
+          WHEN 'W1' THEN 1
+          WHEN 'W2' THEN 15
+          WHEN 'Ne' THEN 1
+          WHEN 'Pa' THEN 1
+          ELSE 1
+          END AS INT64) ;;
   }
 
   dimension: wave_date {
@@ -376,19 +376,7 @@ view: rldflat {
     drill_fields: [detail*]
   }
 
-#   measure: wtbase {
-#     group_label: "Weight Metrics"
-#     label: "Weighted Base"
-#     type: sum_distinct
-#     sql_distinct_key: ${respondent_serial} ;;
-#     sql: ${wtct} ;;
-#     value_format_name: decimal_0
-#     drill_fields: [detail*]
-# #     (SELECT SUM(${wm3}) FROM (SELECT DISTINCT respondent_serial FROM GPay.RLDeav) v
-# #         LEFT OUTER JOIN {rldflat} f ON f.respondent_serial=v.respondent_serial)
-#   }
-
-  measure: eff_base {
+ measure: eff_base {
     group_label: "Weight Metrics"
     label: "Effective Base"
     type: number
@@ -401,11 +389,6 @@ view: rldflat {
     type: number
     hidden: yes
     sql:  sum(${wtct}) OVER ( PARTITION BY
-          -- all rldeav fields
-              {% if rldeav.metric_id._is_selected %} ${rldeav.metric_id} , {% endif %}
-              --{% if rldeav.metric_code._is_selected %} ${rldeav.metric_code} , {% endif %}
-              {% if rldeav.metric_label._is_selected %} ${rldeav.metric_label} , {% endif %}
-
           -- all rldflat fields
               {% if attribute_selector1._parameter_value == 'IN01_SG_Label' and attribute_selector1_dim._is_selected %}
                       ${in01_sg_label} ,
@@ -509,45 +492,45 @@ view: rldflat {
 
   #Significance Filter
   dimension: significance_dropdown_dim {
-  label: "Significance"
-  group_label: "Parameters"
-  type: string
-  sql: {% parameter significance_dropdown  %};;
-}
+    label: "Significance"
+    group_label: "Parameters"
+    type: string
+    sql: {% parameter significance_dropdown  %};;
+  }
 
-parameter: confidence_interval {
-  label: "Confidence Interval Parameter"
-  description: "Choose Confidence % for crosstabs"
-  type: string
-  allowed_value: {
-    label: "85%"
-    value: "1.44"
+  parameter: confidence_interval {
+    label: "Confidence Interval Parameter"
+    description: "Choose Confidence % for crosstabs"
+    type: string
+    allowed_value: {
+      label: "85%"
+      value: "1.44"
+    }
+    allowed_value: {
+      label: "90%"
+      value: "1.65"
+    }
+    allowed_value: {
+      label: "95%"
+      value: "1.96"
+    }
+    allowed_value: {
+      label: "99%"
+      value: "2.58"
+    }
   }
-  allowed_value: {
-    label: "90%"
-    value: "1.65"
-  }
-  allowed_value: {
-    label: "95%"
-    value: "1.96"
-  }
-  allowed_value: {
-    label: "99%"
-    value: "2.58"
-  }
-}
 
 #Confidence Interval Filter
-dimension: confidence_interval_dim {
-  label: "Confidence Interval"
-  group_label: "Parameters"
-  type: string
-  sql:  {% parameter confidence_interval  %};;
-}
+  dimension: confidence_interval_dim {
+    label: "Confidence Interval"
+    group_label: "Parameters"
+    type: string
+    sql:  {% parameter confidence_interval  %};;
+  }
 
-set: detail {
-  fields: [in01_sg_label,in02_region1_label,in02_stdregion_label,resp_age_label,resp_gender_label,wtct]
-}
+  set: detail {
+    fields: [in01_sg_label,in02_region1_label,in02_stdregion_label,resp_age_label,resp_gender_label,wtct]
+  }
 
   dimension: wm3_comp_incomp {
     type: number

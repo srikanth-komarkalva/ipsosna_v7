@@ -15,7 +15,8 @@ view: bases {
 
   dimension: wave_sid {
     type: string
-    label: "Wave"
+#     hidden: yes
+    label: "Wave from Bases"
     sql: ${TABLE}.WaveSID ;;
   }
 
@@ -85,7 +86,7 @@ view: bases {
     group_label: "Weight Metrics"
     label: "Weighted Pct"
     type: number
-    value_format_name: percent_1
+    value_format_name: percent_0
     sql: ${counts.wt_ct}/${wt_base} ;;
   }
 

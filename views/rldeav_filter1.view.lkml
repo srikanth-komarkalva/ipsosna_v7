@@ -69,4 +69,13 @@ view: rldeav_filter1 {
     hidden: yes
     sql: ${TABLE}.response_order ;;
   }
+
+#   measure: wtbase {
+#     group_label: "Weight Metrics"
+#     label: "Weighted Base"
+#     type: sum_distinct
+#     sql_distinct_key: ${respondent_serial} ;;
+#     sql: ${rldflat_v2.wm3} ;;
+#     value_format_name: decimal_0
+#   }
 }
