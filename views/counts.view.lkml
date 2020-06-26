@@ -1,3 +1,4 @@
+include: "rldflat.view.lkml"
 view: counts {
   derived_table: {
     datagroup_trigger: ipsosna_v7_default_datagroup
@@ -7,9 +8,15 @@ view: counts {
         cast('2000-01-01' as date) as dummydate
         FROM GPay.RLDeav v
         LEFT OUTER JOIN GPay.RLDflat f ON f.respondent_serial=v.respondent_serial
-        WHERE v.vtype IN ('single','multi')
+        WHERE v.vtype IN ('single','multi') and
+        {% condition gender %} f.resp_gender {% endcondition %}
         GROUP BY  v.metricID, v.response_code, v.response_label, v.response_order,f.WaveSID
  ;;
+  }
+
+  filter: gender {
+    type: string
+    suggest_dimension: rldflat.resp_gender
   }
 
   dimension: wave_sid {

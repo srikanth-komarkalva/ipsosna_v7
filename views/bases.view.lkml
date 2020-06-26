@@ -1,4 +1,6 @@
 include: "counts.view.lkml"
+include: "rldflat.view.lkml"
+include: "rldeav_filter1.view.lkml"
 view: bases {
   derived_table: {
     datagroup_trigger: ipsosna_v7_default_datagroup
@@ -9,8 +11,15 @@ view: bases {
         FROM (SELECT DISTINCT respondent_serial, metricID, metric_code, metric_label, metric_order, vtype FROM GPay.RLDeav) v
         LEFT OUTER JOIN GPay.RLDflat f ON f.respondent_serial=v.respondent_serial
         WHERE v.vtype IN ('single','multi')
+        {% if gender._is_selected %} {% condition gender %} f.resp_gender {% endcondition %} {% endif %}
+
         GROUP BY v.metricID, v.metric_code, v.metric_label, v.metric_order,f.WaveSID
  ;;
+  }
+
+  filter: gender {
+    type: string
+    suggest_dimension: rldflat.resp_gender
   }
 
   dimension: wave_sid {
@@ -18,6 +27,13 @@ view: bases {
 #     hidden: yes
     label: "Wave from Bases"
     sql: ${TABLE}.WaveSID ;;
+  }
+
+  dimension: resp_gender {
+    type: string
+#     hidden: yes
+    label: "Gender"
+    sql: ${TABLE}.resp_gender ;;
   }
 
   dimension: metric_id {

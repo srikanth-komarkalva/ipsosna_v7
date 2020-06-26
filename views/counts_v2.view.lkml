@@ -11,7 +11,9 @@ view: counts_v2 {
         f.wm3,f.QuotAgeRange,f.resp_gender,
         cast('2000-01-01' as date) as dummydate FROM GPay.RLDeav v
         LEFT OUTER JOIN GPay.RLDflat f ON f.respondent_serial=v.respondent_serial
-        WHERE v.vtype IN ('single','multi');;
+        WHERE v.vtype IN ('single','multi')
+
+        ;;
   }
 #   AND f.resp_gender='male' and f.QuotAgeRange ='_18_24'
 # INNER JOIN (SELECT DISTINCT respondent_serial FROM GPay.RLDeav WHERE metric_code='IN02REGION1' AND response_label IN('MAHARASHTRA')) f2 ON f2.respondent_serial=v.respondent_serial

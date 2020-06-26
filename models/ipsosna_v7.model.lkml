@@ -74,6 +74,8 @@ explore: gpay_crosstab_v2 {
     view_label: "Crosstab for GPay v2"
     relationship: many_to_one
     type: left_outer
+#     sql_where: ${rldeav_filter1.respondent_serial} = ${counts_v2.respondent_serial} and
+#     ${rldeav_filter2.respondent_serial} = ${counts_v2.respondent_serial};;
     sql_on: ${counts_v2.metric_id} = ${bases_v2.metric_id}
         AND ${counts_v2.resp_gender} = ${bases_v2.resp_gender}
         AND ${counts_v2.QuotAgeRange} = ${bases_v2.quotagerange}
@@ -84,7 +86,9 @@ explore: gpay_crosstab_v2 {
     view_label: "Crosstab for Google Pay"
     relationship: one_to_one
     type: inner
-    required_joins: [counts_v2]
+#     required_joins: [counts_v2]
+#     sql_where: ${rldeav_filter1.respondent_serial} = ${counts_v2.respondent_serial} and
+#     ${counts_v2.metric_id} <> ${bases_v2.metric_id};;
     sql_on: ${rldeav_filter1.respondent_serial} = ${bases_v2.respondent_serial};;
   }
 
@@ -92,7 +96,9 @@ explore: gpay_crosstab_v2 {
     view_label: "Crosstab for Google Pay"
     relationship: one_to_one
     type: inner
-    required_joins: [counts_v2]
+#     required_joins: [counts_v2]
+#     sql_where: ${rldeav_filter2.respondent_serial} = ${counts_v2.respondent_serial} and
+#     ${counts_v2.metric_id} <> ${bases_v2.metric_id};;
     sql_on: ${rldeav_filter2.respondent_serial} = ${bases_v2.respondent_serial};;
   }
 
@@ -100,7 +106,9 @@ explore: gpay_crosstab_v2 {
     view_label: "Crosstab for Google Pay"
     relationship: one_to_one
     type: inner
-    required_joins: [counts_v2]
+#     required_joins: [counts_v2]
+#     sql_where: ${rldeav_filter3.respondent_serial} = ${counts_v2.respondent_serial} and
+#     ${counts_v2.metric_id} <> ${bases_v2.metric_id};;
     sql_on: ${rldeav_filter3.respondent_serial} = ${bases_v2.respondent_serial};;
   }
 }
