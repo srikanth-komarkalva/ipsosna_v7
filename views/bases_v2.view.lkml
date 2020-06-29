@@ -3,7 +3,7 @@ view: bases_v2 {
   derived_table: {
     datagroup_trigger: ipsosna_v7_default_datagroup
     partition_keys: ["dummydate"]
-    cluster_keys: ["metricID"]
+    cluster_keys: ["metricID","resp_gender","WaveSID"]
     sql: SELECT v.metricID, v.metric_code, v.metric_label, v.metric_order,v.respondent_serial,
         f.wm3,
         (SELECT DISTINCT response_label FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDResponses` resp

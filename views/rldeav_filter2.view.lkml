@@ -3,7 +3,7 @@ view: rldeav_filter2 {
   derived_table: {
     datagroup_trigger: ipsosna_v7_default_datagroup
     partition_keys: ["dummydate"]
-    cluster_keys: ["metric_code","response_code"]
+    cluster_keys: ["metric_code","response_label"]
     sql: SELECT DISTINCT respondent_serial,metric_code, metric_label, metric_order,metricID,response_code, response_label,response_order,
     cast('2000-01-01' as date) as dummydate
     FROM GPay.RLDeav
