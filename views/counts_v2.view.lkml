@@ -136,6 +136,22 @@ view: counts_v2 {
     sql: ${TABLE}.response_label ;;
   }
 
+  dimension: looker_image {
+    label: "Response Label (with image)"
+    type: string
+    sql: ${TABLE}.response_label;;
+    html:
+    {% if value == 'Google Pay' or value == 'Gpay' %}
+         <p><img src="https://pay.google.com/about/static_kcs/images/logos/google-pay-logo.svg" height=50 width=50> {{ rendered_value }}</p>
+      {% elsif value == 'Amazon Pay' %}
+        <p><img src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/032018/untitled-1_160.png" height=50 width=50 > {{ rendered_value }}</p>
+      {% elsif value == 'BHIM UPI' or value == 'BHIM / UPI' %}
+        <p><img src="https://www.bhimupi.org.in/sites/default/files/Bhim-UPI_1.png" height=50 width=50> {{ rendered_value }}</p>
+      {% else %}
+        <p><img src="https://logo-core.clearbit.com/{{response_label}}.com" height=50 width=50 /> {{ rendered_value }}</p>
+      {% endif %} ;;
+  }
+
   dimension: response_order {
     type: number
     hidden: yes
