@@ -57,8 +57,13 @@ view: rldeav {
     order_by_field: response_order
     group_label: "Question Information"
     type: string
-    sql: ${TABLE}.response_label ;;
+    sql: ${TABLE}.response_label
+     ;;
   }
+#   CASE
+#     WHEN "Gpay" THEN "Google Pay"
+#     ELSE ${TABLE}.response_label
+#     END
 
   dimension: looker_image {
     label: "Response Label (with image)"

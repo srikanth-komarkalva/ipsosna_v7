@@ -133,8 +133,14 @@ view: counts_v2 {
   dimension: response_label {
     type: string
     order_by_field: response_order
-    sql: ${TABLE}.response_label ;;
+    sql: ${TABLE}.response_label
+     ;;
   }
+#   CASE ${TABLE}.response_label
+#     WHEN "Gpay" THEN "Google Pay"
+#     WHEN "Google Pay" THEN "Google Pay"
+#     ELSE ${TABLE}.response_label
+#     END
 
   dimension: looker_image {
     label: "Response Label (with image)"
