@@ -60,13 +60,26 @@ view: rldeav {
     sql: ${TABLE}.response_label
      ;;
   }
-#   CASE
-#     WHEN "Gpay" THEN "Google Pay"
-#     ELSE ${TABLE}.response_label
-#     END
+
+  dimension: response_label_custom {
+    group_label: "Developer Fields (not for use)"
+    type: string
+    sql: case ${response_label}
+                WHEN 'Extremely satisfied' THEN 'Extremely / Moderately satisfied'
+                WHEN 'Moderately satisfied' THEN 'Extremely / Moderately satisfied'
+                WHEN 'More than once a day' THEN 'Use Google Pay at least once per day'
+                WHEN 'About once a day' THEN 'Use Google Pay at least once per day'
+                WHEN 'A few times a week' THEN 'Use Google Pay at least once per week'
+                WHEN 'About once a week' THEN 'Use Google Pay at least once per week'
+                WHEN 'A few times a month' THEN 'Use Google Pay monthly or less often'
+                WHEN 'Once a month or less often' THEN 'Use Google Pay monthly or less often'
+                ELSE ${response_label}
+                END;;
+  }
 
   dimension: looker_image {
     label: "Response Label (with image)"
+    group_label: "Developer Fields (not for use)"
     type: string
     sql: ${TABLE}.response_label;;
     html:
