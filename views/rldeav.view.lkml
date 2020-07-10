@@ -59,6 +59,7 @@ view: rldeav {
     type: string
     sql: ${TABLE}.response_label
      ;;
+    html: <p style="font-size:90%;word-wrap:break-word;text-align:right;justify-content: center">{{ rendered_value }}</p> ;;
   }
 
   dimension: response_label_custom {
@@ -75,6 +76,27 @@ view: rldeav {
                 WHEN 'Once a month or less often' THEN 'Use Google Pay monthly or less often'
                 ELSE ${response_label}
                 END;;
+  }
+
+  dimension: response_label_order {
+    group_label: "Developer Fields (not for use)"
+    type: number
+    sql:
+    CASE ${response_label}
+    WHEN 'Not sure' THEN 12
+    WHEN 'Pay at a local store (including QR code)' THEN 6
+    WHEN 'Pay on apps and/or websites (e.g. food delivery, cabs/taxi, movies, travel)' THEN 7
+    WHEN 'Earn rewards, scratch cards or discounts' THEN 4
+    WHEN 'Pay for daily transportation (e.g. bus, auto, metro)' THEN 9
+    WHEN 'Transfer money to other people (e.g. splitting a bill)' THEN 3
+    WHEN 'Pay monthly bills (e.g. electricity, DTH, gas, water, FASTag)' THEN 2
+    WHEN 'Recharge their mobile' THEN 1
+    WHEN 'Book train tickets on IRCTC' THEN 8
+    WHEN 'Buy and sell gold' THEN 11
+    WHEN 'Pay to any bank account, even those not with the same app' THEN 5
+    WHEN 'Pay for petrol/diesel' THEN 10
+    END
+    ;;
   }
 
   dimension: looker_image {

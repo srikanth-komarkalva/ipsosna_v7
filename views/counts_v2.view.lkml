@@ -34,66 +34,6 @@ view: counts_v2 {
     sql: ${TABLE}.metricID ;;
   }
 
-# #   filter: metric_code_1 {
-# #     full_suggestions: yes
-# #     suggest_dimension: rldeav_filter1.metric_code
-# #     type: string
-# #     sql: {% condition metric_code_1 %} ${rldeav_filter1.metric_code} {% endcondition %}
-# #     ;;
-# #   }
-# #   filter: response_label_1 {
-# #     full_suggestions: yes
-# #     suggest_dimension: rldeav_filter1.response_label
-# #     type: string
-# #     sql: {% condition response_label_1 %} ${rldeav_filter1.response_label} {% endcondition %}
-# #      ;;
-# #   }
-# #   filter: metric_code_2 {
-# #     full_suggestions: yes
-# #     suggest_dimension: rldeav_filter2.metric_code
-# #     type: string
-# #     sql: {% condition metric_code_2 %} ${rldeav_filter2.metric_code} {% endcondition %}
-# #      ;;
-# #   }
-# #   filter: response_label_2 {
-# #     full_suggestions: yes
-# #     suggest_dimension: rldeav_filter2.response_label
-# #     type: string
-# #     sql: {% condition response_label_2 %} ${rldeav_filter2.response_label} {% endcondition %}
-# #      ;;
-# #   }
-# #
-#
-#   dimension: metric_code_1 {
-#     full_suggestions: yes
-#     suggest_dimension: rldeav_filter1.metric_code
-#     type: string
-#     sql: ${rldeav_filter1.metric_code}
-#       ;;
-#   }
-#   dimension: response_label_1 {
-#     full_suggestions: yes
-#     suggest_dimension: rldeav_filter1.response_label
-#     type: string
-#     sql: ${rldeav_filter1.response_label}
-#       ;;
-#   }
-#   dimension: metric_code_2 {
-#     full_suggestions: yes
-#     suggest_dimension: rldeav_filter2.metric_code
-#     type: string
-#     sql: ${rldeav_filter2.metric_code}
-#       ;;
-#   }
-#   dimension: response_label_2 {
-#     full_suggestions: yes
-#     suggest_dimension: rldeav_filter2.response_label
-#     type: string
-#     sql:  ${rldeav_filter2.response_label}
-#       ;;
-#   }
-
-
   dimension: metric_code {
     hidden: yes
     type: string
@@ -135,12 +75,29 @@ view: counts_v2 {
     order_by_field: response_order
     sql: ${TABLE}.response_label
      ;;
+    html: <p style="font-size:90%;word-wrap:break-word;justify-content: center;text-align:right">{{ rendered_value }}</p> ;;
   }
-#   CASE ${TABLE}.response_label
-#     WHEN "Gpay" THEN "Google Pay"
-#     WHEN "Google Pay" THEN "Google Pay"
-#     ELSE ${TABLE}.response_label
-#     END
+
+  dimension: response_label_order {
+    group_label: "Developer Fields (not for use)"
+    type: number
+    sql:
+    CASE ${response_label}
+    WHEN 'Not sure' THEN 12
+    WHEN 'Pay at a local store (including QR code)' THEN 6
+    WHEN 'Pay on apps and/or websites (e.g. food delivery, cabs/taxi, movies, travel)' THEN 7
+    WHEN 'Earn rewards, scratch cards or discounts' THEN 4
+    WHEN 'Pay for daily transportation (e.g. bus, auto, metro)' THEN 9
+    WHEN 'Transfer money to other people (e.g. splitting a bill)' THEN 3
+    WHEN 'Pay monthly bills (e.g. electricity, DTH, gas, water, FASTag)' THEN 2
+    WHEN 'Recharge their mobile' THEN 1
+    WHEN 'Book train tickets on IRCTC' THEN 8
+    WHEN 'Buy and sell gold' THEN 11
+    WHEN 'Pay to any bank account, even those not with the same app' THEN 5
+    WHEN 'Pay for petrol/diesel' THEN 10
+    END
+    ;;
+  }
 
   dimension: looker_image {
     label: "Response Label (with image)"
