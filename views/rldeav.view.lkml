@@ -102,7 +102,7 @@ view: rldeav {
 
 
   dimension: looker_image {
-    label: "Response Label (with image)"
+    label: "Response Label Image"
     group_label: "Developer Fields (not for use)"
     type: string
     sql: ${TABLE}.response_label;;
