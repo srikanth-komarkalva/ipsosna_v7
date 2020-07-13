@@ -360,6 +360,12 @@ view: rldflat {
     sql: CAST(date(${wave_year},${wave_month},${wave_day}) as DATE) ;;
   }
 
+  dimension: title {
+    type: string
+    sql: ${wave_sid_label};;
+    html: <h1>Sales on {{ rendered_value }}</h1> ;;
+  }
+
   dimension: wm3 {
     hidden: yes
     type: number
