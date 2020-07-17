@@ -110,9 +110,25 @@ view: counts_v2 {
       {% elsif value == 'Amazon Pay' %}
         <p><img src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/032018/untitled-1_160.png" height=50 width=50 ></p>
       {% elsif value == 'BHIM UPI' or value == 'BHIM / UPI' %}
-        <p><img src="https://www.bhimupi.org.in/sites/default/files/Bhim-UPI_1.png" height=50 width=50></p>
+        <p><img src="https://sutrashome.files.wordpress.com/2019/04/bhim.jpg" height=30 width=50></p>
+      {% elsif value == 'Samsung Pay' %}
+        <p><img src="https://securecdn.pymnts.com/wp-content/uploads/2020/01/Screen-Shot-2020-01-31-at-3.54.58-PM.png" height=30 width=50></p>
+      {% elsif value == 'Mastercard Masterpass' %}
+        <p><img src="https://www.pymnts.com/wp-content/uploads/2016/09/Mastercard-Digital-.png" height=30 width=50></p>
+      {% elsif value == 'Visa Checkout' %}
+        <p><img src="https://www.merchant-accounts.ca/pics/VisaCheckoutLogo.jpg" height=30 width=50></p>
+      {% elsif value == 'Airtel Payments Bank' %}
+        <p><img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Airtel_payments_bank_logo.jpg" height=30 width=50></p>
+      {% elsif value == 'HDFC PayZapp' %}
+        <p><img src="https://s3.amazonaws.com/zaubatrademarks/49a573c7-b5d5-4edc-8f5e-7791dba1c3f8.png" height=30 width=50></p>
+      {% elsif value == 'WhatsApp Pay' %}
+        <p><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" height=30 width=50></p>
+      {% elsif value == 'JioMoney' %}
+        <p><img src="https://avatars0.githubusercontent.com/u/30654090?s=460&u=4992d663f76ee28a85b20f447b83c2856d06bad6&v=4" height=50 width=50></p>
+      {% elsif value == 'Tez' %}
+        <p><img src="https://u01.appmifile.com/images/2018/03/08/ff2651d0-c1df-4b18-936c-78e4c88b8cac.png" height=50 width=50></p>
       {% else %}
-        <p><img src="https://logo-core.clearbit.com/{{response_label}}.com" height=30 width=30 /></p>
+        <p><img src="https://logo-core.clearbit.com/{{response_label}}.com" height=30 width=50 /></p>
       {% endif %} ;;
   }
 

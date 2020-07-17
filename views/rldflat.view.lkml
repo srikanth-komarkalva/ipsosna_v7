@@ -381,24 +381,11 @@ view: rldflat {
     value_format_name: decimal_2
     drill_fields: [detail*]
   }
-
-#   measure: wtbase {
-#     group_label: "Weight Metrics"
-#     label: "Weighted Base"
-#     type: sum_distinct
-#     sql_distinct_key: ${respondent_serial} ;;
-#     sql: ${wtct} ;;
-#     value_format_name: decimal_0
-#     drill_fields: [detail*]
-# #     (SELECT SUM(${wm3}) FROM (SELECT DISTINCT respondent_serial FROM GPay.RLDeav) v
-# #         LEFT OUTER JOIN {rldflat} f ON f.respondent_serial=v.respondent_serial)
-#   }
-
   measure: eff_base {
     group_label: "Weight Metrics"
     label: "Effective Base"
     type: number
-    sql: SUM(${wm3}*${wm3})/SUM(${wm3})*SUM(${wm3}) ;;
+    sql: SUM(${wm3}*${wm3})/NULLIF(SUM(${wm3})*SUM(${wm3}),0) ;;
     value_format_name: decimal_2
     drill_fields: [detail*]
   }
