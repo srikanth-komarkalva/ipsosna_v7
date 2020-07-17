@@ -127,6 +127,8 @@ view: rldeav {
         <p><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" height=30 width=50></p>
       {% elsif value == 'JioMoney' %}
         <p><img src="https://avatars0.githubusercontent.com/u/30654090?s=460&u=4992d663f76ee28a85b20f447b83c2856d06bad6&v=4" height=50 width=50></p>
+      {% elsif value == 'Tez' %}
+        <p><img src="https://icon2.cleanpng.com/20180328/zze/kisspng-tez-unified-payments-interface-google-apps-5abb75dc86eca2.9888044115222348445527.jpg" height=30 width=30></p>
       {% else %}
         <p><img src="https://logo-core.clearbit.com/{{response_label}}.com" height=30 width=50 /></p>
       {% endif %} ;;

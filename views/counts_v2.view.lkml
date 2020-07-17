@@ -126,7 +126,7 @@ view: counts_v2 {
       {% elsif value == 'JioMoney' %}
         <p><img src="https://avatars0.githubusercontent.com/u/30654090?s=460&u=4992d663f76ee28a85b20f447b83c2856d06bad6&v=4" height=50 width=50></p>
       {% elsif value == 'Tez' %}
-        <p><img src="https://u01.appmifile.com/images/2018/03/08/ff2651d0-c1df-4b18-936c-78e4c88b8cac.png" height=50 width=50></p>
+        <p><img src="https://icon2.cleanpng.com/20180328/zze/kisspng-tez-unified-payments-interface-google-apps-5abb75dc86eca2.9888044115222348445527.jpg" height=30 width=30></p>
       {% else %}
         <p><img src="https://logo-core.clearbit.com/{{response_label}}.com" height=30 width=50 /></p>
       {% endif %} ;;
