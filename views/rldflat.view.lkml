@@ -367,7 +367,7 @@ view: rldflat {
   }
 
   dimension: wm3 {
-    hidden: yes
+#     hidden: yes
     type: number
     sql: ${TABLE}.wm3 ;;
   }
