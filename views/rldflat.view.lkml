@@ -385,9 +385,9 @@ view: rldflat {
     group_label: "Weight Metrics"
     label: "Effective Base"
     type: number
-    sql: SUM(${wm3}*${wm3})/NULLIF(SUM(${wm3})*SUM(${wm3}),0) ;;
+    sql: (SUM(${wm3})*SUM(${wm3}))/NULLIF(SUM(${wm3}*${wm3}),0);;
     value_format_name: decimal_2
-    drill_fields: [detail*]
+#     drill_fields: [detail*]
   }
 
   measure: sum_wtct_subtotal {
