@@ -11,25 +11,12 @@ view: counts_v2 {
         f.wm3,f.QuotAgeRange,f.resp_gender,
         cast('2000-01-01' as date) as dummydate FROM GPay.RLDeav v
         LEFT OUTER JOIN GPay.RLDflat f ON f.respondent_serial=v.respondent_serial
-        WHERE v.vtype IN ('single','multi')
-
-        ;;
+        WHERE v.vtype IN ('single','multi') ;;
   }
-#   AND f.resp_gender='male' and f.QuotAgeRange ='_18_24'
-# INNER JOIN (SELECT DISTINCT respondent_serial FROM GPay.RLDeav WHERE metric_code='IN02REGION1' AND response_label IN('MAHARASHTRA')) f2 ON f2.respondent_serial=v.respondent_serial
-# INNER JOIN (SELECT DISTINCT respondent_serial FROM GPay.RLDeav WHERE metric_code='Q3A_P3M[{_4}].Q3A_P3M_scale' AND response_label IN('In the last month','In the last 2 months','In the last 3 months')) f3 ON f3.respondent_serial=v.respondent_serial
-
-# INNER JOIN (SELECT DISTINCT respondent_serial FROM GPay.RLDeav WHERE {% condition metric_code %} rldeav_filter1.metric_code {% endcondition %}
-# AND {% condition response_label %} rldeav_filter1.response_label {% endcondition %}) f2 ON f2.respondent_serial=v.respondent_serial
-# INNER JOIN (SELECT DISTINCT respondent_serial FROM GPay.RLDeav WHERE {% condition metric_code %} rldeav_filter2.metric_code {% endcondition %}
-# AND {% condition response_label %} rldeav_filter2.response_label {% endcondition %}) f3 ON f3.respondent_serial=v.respondent_serial
-
-# AND {% condition resp_gender %} bases_v2.resp_gender {% endcondition %}
-# AND {% condition QuotAgeRange %} bases_v2.QuotAgeRange {% endcondition %}
 
   dimension: metric_id {
     hidden: yes
-#     primary_key: yes
+    primary_key: yes
     type: number
     sql: ${TABLE}.metricID ;;
   }
