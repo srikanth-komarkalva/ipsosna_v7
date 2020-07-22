@@ -6,7 +6,11 @@ view: bases {
     datagroup_trigger: ipsosna_v7_default_datagroup
     partition_keys: ["dummydate"]
     cluster_keys: ["metricID"]
-    sql: SELECT v.metricID, v.metric_code, v.metric_label, v.metric_order,f.WaveSID,COUNT(DISTINCT v.respondent_serial) AS UnBase, SUM(f.wm3) AS WtBase,
+    sql: SELECT v.metricID, v.metric_code, v.metric_label, v.metric_order,f.WaveSID,
+        (SELECT DISTINCT response_label FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDResponses` resp
+        INNER JOIN `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDMetrics` metric ON resp.metricid= metric.metricid
+        WHERE metric_code = 'WaveSID' AND resp.response_code = f.WaveSID) AS WaveSID_Label,
+        COUNT(DISTINCT v.respondent_serial) AS UnBase, SUM(f.wm3) AS WtBase,
         cast('2000-01-01' as date) as dummydate
         FROM (SELECT DISTINCT respondent_serial, metricID, metric_code, metric_label, metric_order, vtype FROM GPay.RLDeav) v
         LEFT OUTER JOIN GPay.RLDflat f ON f.respondent_serial=v.respondent_serial
@@ -27,6 +31,13 @@ view: bases {
 #     hidden: yes
     label: "Wave from Bases"
     sql: ${TABLE}.WaveSID ;;
+  }
+
+  dimension: wave_sid_label {
+    label: "Wave Label"
+    group_label: "Demographic Fields"
+    type: string
+    sql: ${TABLE}.WaveSID_Label ;;
   }
 
   dimension: resp_gender {
