@@ -43,8 +43,6 @@ view: bases_v2 {
         WHERE v.vtype IN ('single','multi')
         ;;
   }
-#INNER JOIN (SELECT DISTINCT respondent_serial FROM GPay.RLDeav WHERE metric_code='IN02REGION1' AND response_label IN('MAHARASHTRA')) f2 ON f2.respondent_serial=v.respondent_serial
-#INNER JOIN (SELECT DISTINCT respondent_serial FROM GPay.RLDeav WHERE metric_code='Q3A_P3M[{_4}].Q3A_P3M_scale' AND response_label IN('In the last month','In the last 2 months','In the last 3 months')) f3 ON f3.respondent_serial=v.respondent_serial
 
   dimension: wm3 {
     hidden: yes
