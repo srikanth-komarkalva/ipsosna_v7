@@ -86,6 +86,13 @@ view: counts_v2 {
     ;;
   }
 
+#   dimension: resp_custom_order {
+#     group_label: "Developer Fields (not for use)"
+#     type: number
+#     sql: rownumber() group: ${response_label}
+#     ;;
+#   }
+
   dimension: looker_image {
     label: "Brand"
     group_label: "Developer Fields (not for use)"
@@ -121,7 +128,8 @@ view: counts_v2 {
 
   dimension: response_order {
     type: number
-    hidden: yes
+    group_label: "Developer Fields (not for use)"
+#     hidden: yes
     sql: ${TABLE}.response_order ;;
   }
 

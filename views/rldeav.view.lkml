@@ -99,7 +99,12 @@ view: rldeav {
     ;;
   }
 
-
+#   dimension: resp_custom_order {
+#     group_label: "Developer Fields (not for use)"
+#     type: number
+#     sql: row_number() OVER (${response_label},1)
+#       ;;
+#   }
 
   dimension: looker_image {
     label: "Brand"
@@ -135,9 +140,9 @@ view: rldeav {
   }
 
   dimension: response_order {
-    group_label: "Question Information"
+    group_label: "Developer Fields (not for use)"
     type: number
-    hidden: yes
+#     hidden: yes
     sql: ${TABLE}.response_order ;;
   }
 
