@@ -14,7 +14,7 @@ explore: gpay_crosstab {
   label: "Crosstab for Google Pay"
   view_name: rldflat
   view_label: "Crosstab for Google Pay"
-  sql_always_where: ${rldeav.vtype} IN ('single','multi');;
+  sql_always_where: ${rldeav.vtype} IN ('single','multi') AND ${rldeav.response_label} NOT IN ('None of these');;
 
   join: rldeav {
     view_label: "Crosstab for Google Pay"
