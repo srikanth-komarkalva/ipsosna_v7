@@ -163,6 +163,14 @@ view: bases_v2 {
     sql: ${TABLE}.WaveSID_Label ;;
   }
 
+  dimension: wave_sid_percent_chart {
+    label: "Wave (custom)"
+    group_label: "Developer Fields (not for use)"
+    type: string
+#     order_by_field: wave_date
+    sql: ${TABLE}.WaveSID_Label;;
+  }
+
   dimension: wave_year {
     hidden: yes
     group_label: "Demographic Fields"
