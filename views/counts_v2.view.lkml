@@ -9,8 +9,8 @@ view: counts_v2 {
     cluster_keys: ["metricID","response_label"]
     sql: SELECT v.metricID, v.metric_code, v.response_code, v.response_label,v.response_order,v.respondent_serial,
         f.wm3,f.QuotAgeRange,f.resp_gender,
-        cast('2000-01-01' as date) as dummydate FROM GPay.RLDeav v
-        LEFT OUTER JOIN GPay.RLDflat f ON f.respondent_serial=v.respondent_serial
+        cast('2000-01-01' as date) as dummydate FROM GPay.Z_RLDeav v
+        LEFT OUTER JOIN GPay.Z_RLDflat f ON f.respondent_serial=v.respondent_serial
         WHERE v.vtype IN ('single','multi') ;;
   }
 

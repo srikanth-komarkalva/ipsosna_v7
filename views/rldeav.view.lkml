@@ -1,6 +1,6 @@
 view: rldeav {
   label: "EAV Fact"
-  sql_table_name: `GPay.RLDeav`
+  sql_table_name: `GPay.Z_RLDeav`
     ;;
 
   dimension: metric_code {
