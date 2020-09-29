@@ -1,7 +1,7 @@
 view: wave_labels {
   derived_table: {
-    sql: SELECT DISTINCT response_label, response_code FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.Z_RLDResponses` resp
-        INNER JOIN `mgcp-1192365-ipsos-gbht-srf617.GPay.Z_RLDMetrics` metric ON resp.metricid= metric.metricid
+    sql: SELECT DISTINCT response_label, response_code FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDResponses` resp
+        INNER JOIN `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDMetrics` metric ON resp.metricid= metric.metricid
         WHERE metric_code = 'WaveSID'
  ;;
   }

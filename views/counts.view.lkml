@@ -6,8 +6,8 @@ view: counts {
     cluster_keys: ["metricID"]
     sql: SELECT v.metricID, v.response_code, v.response_label,v.response_order,f.WaveSID,COUNT(DISTINCT v.respondent_serial) AS UnCt, SUM(f.wm3) AS WtCt,
         cast('2000-01-01' as date) as dummydate
-        FROM GPay.Z_RLDeav v
-        LEFT OUTER JOIN GPay.Z_RLDflat f ON f.respondent_serial=v.respondent_serial
+        FROM GPay.RLDeav v
+        LEFT OUTER JOIN GPay.RLDflat f ON f.respondent_serial=v.respondent_serial
         WHERE v.vtype IN ('single','multi') and
         {% condition gender %} f.resp_gender {% endcondition %}
         GROUP BY  v.metricID, v.response_code, v.response_label, v.response_order,f.WaveSID

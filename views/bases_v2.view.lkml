@@ -6,40 +6,40 @@ view: bases_v2 {
     cluster_keys: ["metricID","resp_gender","WaveSID"]
     sql: SELECT v.metricID, v.metric_code, v.metric_label, v.metric_order,v.respondent_serial,
         f.wm3,
-        (SELECT DISTINCT response_label FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.Z_RLDResponses` resp
-        INNER JOIN `mgcp-1192365-ipsos-gbht-srf617.GPay.Z_RLDMetrics` metric ON resp.metricid= metric.metricid
+        (SELECT DISTINCT response_label FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDResponses` resp
+        INNER JOIN `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDMetrics` metric ON resp.metricid= metric.metricid
         WHERE metric_code = 'IN01SG' AND resp.response_code = f.IN01SG) AS IN01_SG_Label,
         f.IN02REGION1,
-        (SELECT DISTINCT response_label FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.Z_RLDResponses` resp
-        INNER JOIN `mgcp-1192365-ipsos-gbht-srf617.GPay.Z_RLDMetrics` metric ON resp.metricid= metric.metricid
+        (SELECT DISTINCT response_label FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDResponses` resp
+        INNER JOIN `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDMetrics` metric ON resp.metricid= metric.metricid
         WHERE metric_code = 'IN02REGION1' AND resp.response_code = f.IN02REGION1) AS IN02REGION1_Label,
         f.IN02STDREGION,
-        (SELECT DISTINCT response_label FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.Z_RLDResponses` resp
-        INNER JOIN `mgcp-1192365-ipsos-gbht-srf617.GPay.Z_RLDMetrics` metric ON resp.metricid= metric.metricid
+        (SELECT DISTINCT response_label FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDResponses` resp
+        INNER JOIN `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDMetrics` metric ON resp.metricid= metric.metricid
         WHERE metric_code = 'IN02STDREGION' AND resp.response_code = f.IN02STDREGION) AS IN02STDREGION_Label,
         f.QSMARTPHONE_USAGE,
-        (SELECT DISTINCT response_label FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.Z_RLDResponses` resp
-        INNER JOIN `mgcp-1192365-ipsos-gbht-srf617.GPay.Z_RLDMetrics` metric ON resp.metricid= metric.metricid
+        (SELECT DISTINCT response_label FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDResponses` resp
+        INNER JOIN `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDMetrics` metric ON resp.metricid= metric.metricid
         WHERE metric_code = 'QSMARTPHONE_USAGE' AND resp.response_code = f.QSMARTPHONE_USAGE) AS QSMARTPHONE_USAGE_Label,
         f.QUOTAGERANGE,
-        (SELECT DISTINCT response_label FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.Z_RLDResponses` resp
-        INNER JOIN `mgcp-1192365-ipsos-gbht-srf617.GPay.Z_RLDMetrics` metric ON resp.metricid= metric.metricid
+        (SELECT DISTINCT response_label FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDResponses` resp
+        INNER JOIN `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDMetrics` metric ON resp.metricid= metric.metricid
         WHERE metric_code = 'QUOTAGERANGE' AND resp.response_code = f.QUOTAGERANGE) AS QUOTAGERANGE_Label,
         f.resp_age,
-        (SELECT DISTINCT response_label FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.Z_RLDResponses` resp
-        INNER JOIN `mgcp-1192365-ipsos-gbht-srf617.GPay.Z_RLDMetrics` metric ON resp.metricid= metric.metricid
+        (SELECT DISTINCT response_label FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDResponses` resp
+        INNER JOIN `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDMetrics` metric ON resp.metricid= metric.metricid
         WHERE metric_code = 'resp_age' AND resp.response_code = f.resp_age) AS resp_age_Label,
         f.resp_gender,
-        (SELECT DISTINCT response_label FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.Z_RLDResponses` resp
-        INNER JOIN `mgcp-1192365-ipsos-gbht-srf617.GPay.Z_RLDMetrics` metric ON resp.metricid= metric.metricid
+        (SELECT DISTINCT response_label FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDResponses` resp
+        INNER JOIN `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDMetrics` metric ON resp.metricid= metric.metricid
         WHERE metric_code = 'resp_gender' AND resp.response_code = f.resp_gender) AS resp_gender_Label,
         f.WaveSID,
-        (SELECT DISTINCT response_label FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.Z_RLDResponses` resp
-        INNER JOIN `mgcp-1192365-ipsos-gbht-srf617.GPay.Z_RLDMetrics` metric ON resp.metricid= metric.metricid
+        (SELECT DISTINCT response_label FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDResponses` resp
+        INNER JOIN `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDMetrics` metric ON resp.metricid= metric.metricid
         WHERE metric_code = 'WaveSID' AND resp.response_code = f.WaveSID) AS WaveSID_Label,
         cast('2000-01-01' as date) as dummydate
-        FROM (SELECT DISTINCT respondent_serial, metricID, metric_code, metric_label, metric_order, vtype FROM GPay.Z_RLDeav) v
-        LEFT OUTER JOIN GPay.Z_RLDflat f ON f.respondent_serial=v.respondent_serial
+        FROM (SELECT DISTINCT respondent_serial, metricID, metric_code, metric_label, metric_order, vtype FROM GPay.RLDeav) v
+        LEFT OUTER JOIN GPay.RLDflat f ON f.respondent_serial=v.respondent_serial
         WHERE v.vtype IN ('single','multi')
         ;;
   }
