@@ -78,6 +78,14 @@ view: rldeav {
                 END;;
   }
 
+  measure: rank_order {
+    # hidden: yes
+    type: number
+    description: "Used for Sorting Responses"
+    group_label: "Developer Fields (not for use)"
+    sql: RANK() OVER (ORDER BY sum(rldflat.wm3) DESC) ;;
+  }
+
   dimension: response_label_order {
     group_label: "Developer Fields (not for use)"
     type: number
