@@ -124,6 +124,7 @@ view: rldeav {
     WHEN 'HDFC PayZapp' THEN 9
     WHEN 'WhatsApp Pay' THEN 10
     WHEN 'Jio' THEN 11
+    WHEN 'JioMoney' THEN 11
     ELSE
     0
     END
