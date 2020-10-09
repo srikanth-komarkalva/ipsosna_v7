@@ -279,7 +279,7 @@ view: bases_v2 {
   sql_distinct_key: ${respondent_serial} ;;
   label: "Weighted Base"
   value_format_name: decimal_1
-  sql: ${wm3} ;;
+  sql: NULLIF(${wm3},0) ;;
 }
 
 measure: wt_pct {

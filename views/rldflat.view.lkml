@@ -506,7 +506,7 @@ view: rldflat {
     description: "The weighted count of respondents"
     label: "Weighted Count"
     type: sum
-    sql: ${wm3} ;;
+    sql: NULLIF(${wm3},0) ;;
     value_format_name: decimal_2
     drill_fields: [detail*]
   }
