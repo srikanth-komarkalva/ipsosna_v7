@@ -417,6 +417,19 @@ view: rldflat {
     ;;
   }
 
+  dimension: header_title_9 {
+    label: "Title Top Metrics"
+    group_label: "Developer Fields (not for use)"
+    type: string
+    sql: ${wave_sid_label} ;;
+    html:
+    <h1>
+    <p style="color: black; font-size:200%; text-align:center">Google Pay Top Metrics Health Dashboard</p>
+    </h1>
+    <p style="color: dimgrey; font-size:125%; text-align:center">Google Pay Tracking India Report - {{value}}</p>
+    ;;
+  }
+
   dimension: wave_sid_percent_chart {
     label: "Wave (custom)"
     group_label: "Developer Fields (not for use)"
