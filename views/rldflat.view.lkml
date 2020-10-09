@@ -423,12 +423,16 @@ view: rldflat {
     type: string
     sql: ${wave_sid_label} ;;
     html:
-    <h1>
-    <p style="color: black; font-size:200%; text-align:center">Google Pay Top Metrics Health Dashboard</p>
-    </h1>
-    <p style="color: dimgrey; font-size:125%; text-align:center">Google Pay Tracking India Report - {{value}}</p>
+    <h1 style="color: black; font-size:250%; text-align:center; font-family: Arial, Helvetica, sans-serif;">Google Pay Top Metrics Health Dashboard</h1>
+    <br>
+    </br>
+    <h2 style="color: dimgrey; font-size:100%; text-align:center;font-family: Arial, Helvetica, sans-serif;">Google Pay Tracking India Report - {{value}}</h2>
     ;;
   }
+  # <h1>
+  # <p style="color: black; font-size:200%; text-align:center">Google Pay Top Metrics Health Dashboard</p>
+  #   </h1>
+  #   <p style="color: dimgrey; font-size:125%; text-align:center">Google Pay Tracking India Report - {{value}}</p>
 
   dimension: wave_sid_percent_chart {
     label: "Wave (custom)"
