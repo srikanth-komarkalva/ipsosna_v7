@@ -6,7 +6,7 @@ view: counts_v2 {
   derived_table: {
     datagroup_trigger: ipsosna_v7_default_datagroup
     partition_keys: ["dummydate"]
-    cluster_keys: ["metricID","response_label"]
+    cluster_keys: ["metricID"]
     sql: SELECT v.metricID, v.metric_code, v.response_code, v.response_label,v.response_order,v.respondent_serial,
         f.wm3,f.QuotAgeRange,f.resp_gender,
         cast('2000-01-01' as date) as dummydate FROM GPay.RLDeav v
