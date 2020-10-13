@@ -78,6 +78,26 @@ view: rldeav {
                 END;;
   }
 
+  dimension: response_label_custom_1 {
+    group_label: "Developer Fields (not for use)"
+    type: string
+    sql: case ${response_label}
+                WHEN 'Slightly satisfied' THEN 'Slightly/Neither/Extremely dissatisfied'
+                WHEN 'Neither satisfied nor dissatisfied' THEN 'Slightly/Neither/Extremely dissatisfied'
+                WHEN 'Slightly dissatisfied' THEN 'Slightly/Neither/Extremely dissatisfied'
+                WHEN 'Moderately dissatisfied' THEN 'Slightly/Neither/Extremely dissatisfied'
+                WHEN 'Extremely dissatisfied' THEN 'Slightly/Neither/Extremely dissatisfied'
+
+                WHEN 'More than once a day' THEN 'Use Google Pay at least once per day'
+                WHEN 'About once a day' THEN 'Use Google Pay at least once per day'
+                WHEN 'A few times a week' THEN 'Use Google Pay at least once per week'
+                WHEN 'About once a week' THEN 'Use Google Pay at least once per week'
+                WHEN 'A few times a month' THEN 'Use Google Pay monthly or less often'
+                WHEN 'Once a month or less often' THEN 'Use Google Pay monthly or less often'
+                ELSE ${response_label}
+                END;;
+  }
+
   measure: rank_order {
     # hidden: yes
     type: number

@@ -302,10 +302,10 @@ view: rldflat {
     type: string
     sql: ${wave_sid_label} ;;
     html:
-    <h1 style="color: black; font-size:250%; text-align:center; font-family: Arial, Helvetica, sans-serif;">Ipsos Trends: USAT</h1>
+    <h1 style="color: black; font-size:250%; line-height: 38px; height:auto; text-align:center; font-family: Arial, Helvetica, sans-serif;">Ipsos Trends: USAT</h1>
     <br>
     </br>
-    <h2 style="color: dimgrey; font-size:100%; text-align:center;font-family: Arial, Helvetica, sans-serif;">Google Pay Tracking India Report - {{value}}</h2>
+    <h2 style="color: dimgrey; font-size:100%; line-height: 20px; height:auto; text-align:center;font-family: Arial, Helvetica, sans-serif;">Google Pay Tracking India Report - {{value}}</h2>
     ;;
   }
 
@@ -320,9 +320,9 @@ view: rldflat {
     sql: ${wave_sid_label} ;;
     html:
     <h1>
-    <p style="color: black; font-size:200%; text-align:center">Ipsos Trends: Trust</p>
+    <p style="color: black; font-size:225%;height:auto; text-align:center">Ipsos Trends: Trust</p>
     </h1>
-    <p style="color: dimgrey; font-size:125%; text-align:center">Google Pay Tracking India Report - {{value}}</p>
+    <p style="color: dimgrey; font-size:100%;height:auto; text-align:center">Google Pay Tracking India Report - {{value}}</p>
     ;;
   }
 
@@ -524,7 +524,7 @@ view: rldflat {
     label: "Weighted Count"
     type: sum
     sql: NULLIF(${wm3},0) ;;
-    value_format_name: decimal_2
+    value_format_name: decimal_0
     drill_fields: [detail*]
   }
   measure: eff_base {
