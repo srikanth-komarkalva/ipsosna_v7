@@ -65,6 +65,25 @@ view: counts_v2 {
     html: <p style="font-size:90%;word-wrap:break-word;justify-content: center;text-align:right">{{ rendered_value }}</p> ;;
   }
 
+  dimension: response_label_subnets {
+    label: "Response Label"
+    description: "To be used for Subnets"
+    group_label: "Developer Fields (not for use)"
+    type: string
+    sql:
+    CASE ${response_label}
+    WHEN 'Google Pay' THEN 'GOOGLE PAY (SUB-SUBNET)'
+    WHEN 'Gpay' THEN 'GOOGLE PAY (SUB-SUBNET)'
+    WHEN 'BHIM UPI' THEN 'BHIM/UPI (NET)'
+    WHEN 'BHIM / UPI' THEN 'BHIM/UPI (NET)'
+    WHEN 'Jio' THEN 'JIO (NET)'
+    WHEN 'JioMoney' THEN 'JIO (NET)'
+    ELSE
+    ${response_label}
+    END
+    ;;
+  }
+
   dimension: response_label_order {
     group_label: "Developer Fields (not for use)"
     type: number
