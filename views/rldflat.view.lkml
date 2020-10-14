@@ -302,16 +302,15 @@ view: rldflat {
     type: string
     sql: ${wave_sid_label} ;;
     html:
-    <h1 style="color: black; font-size:250%; line-height: 38px; height:auto; text-align:center; font-family: Arial, Helvetica, sans-serif;">Ipsos Trends: USAT</h1>
-    <br>
-    </br>
-    <h2 style="color: dimgrey; font-size:100%; line-height: 20px; height:auto; text-align:center;font-family: Arial, Helvetica, sans-serif;">Google Pay Tracking India Report - {{value}}</h2>
-    ;;
+    <body>
+    <div style="position: fixed; top: 0px; width:100%; height: 55px;color: black; font-size:175%;text-align:center;overflow-y: hidden">
+        Ipsos Trends: USAT
+    </div>
+    <div style="position: fixed; top: 0px; width:100%; height: 30px;color: dimgrey; font-size:100%;text-align:center;overflow-y: hidden">
+        Google Pay Tracking India Report - {{value}}
+    </div>
+    </body>;;
   }
-
-# <font color="#282828" size="1"><center>Ipsos Trends: USAT</center></font>
-# <font color="#696969" size="3"><center>Google Pay Tracking India Report - {{value}} </center></font>
-# <p style="color: black; font-size:100%; text-align:center">Google Pay Tracking India Report - {{value}}</p>
 
   dimension: header_title_1 {
     label: "Title Trust"
@@ -319,11 +318,14 @@ view: rldflat {
     type: string
     sql: ${wave_sid_label} ;;
     html:
-    <h1>
-    <p style="color: black; font-size:225%;height:auto; text-align:center">Ipsos Trends: Trust</p>
-    </h1>
-    <p style="color: dimgrey; font-size:100%;height:auto; text-align:center">Google Pay Tracking India Report - {{value}}</p>
-    ;;
+    <body>
+    <div style="position: fixed; top: 0px; width:100%; height: 55px;color: black; font-size:175%;text-align:center;overflow-y: hidden">
+        Ipsos Trends: Trust
+    </div>
+    <div style="position: fixed; top: 0px; width:100%; height: 30px;color: dimgrey; font-size:100%;text-align:center;overflow-y: hidden">
+        Google Pay Tracking India Report - {{value}}
+    </div>
+    </body>;;
   }
 
   dimension: header_title_2 {
@@ -332,11 +334,14 @@ view: rldflat {
     type: string
     sql: ${wave_sid_label} ;;
     html:
-    <h1>
-    <p style="color: black; font-size:200%; text-align:center">Ipsos Trends: Feature Awareness - Places to Pay</p>
-    </h1>
-    <p style="color: dimgrey; font-size:125%; text-align:center">Google Pay Tracking India Report - {{value}}</p>
-    ;;
+    <body>
+    <div style="position: fixed; top: 0px; width:100%; height: 55px;color: black; font-size:175%;text-align:center;overflow-y: hidden">
+        Ipsos Trends: Feature Awareness - Places to Pay
+    </div>
+    <div style="position: fixed; top: 0px; width:100%; height: 30px;color: dimgrey; font-size:100%;text-align:center;overflow-y: hidden">
+        Google Pay Tracking India Report - {{value}}
+    </div>
+    </body>;;
   }
 
   dimension: header_title_3 {
@@ -345,10 +350,14 @@ view: rldflat {
     type: string
     sql: ${wave_sid_label} ;;
     html:
-    <h1>
-    <p style="color: black; font-size:200%; text-align:center">Staples: Attributes</p>
-    </h1>
-    <p style="color: dimgrey; font-size:125%; text-align:center">Google Pay Tracking India Report - {{value}}</p>
+    <body>
+    <div style="position: fixed; top: 0px; width:100%; height: 55px;color: black; font-size:175%;text-align:center;overflow-y: hidden">
+        Staples: Attributes
+    </div>
+    <div style="position: fixed; top: 0px; width:100%; height: 30px;color: dimgrey; font-size:100%;text-align:center;overflow-y: hidden">
+        Google Pay Tracking India Report - {{value}}
+    </div>
+    </body>
     ;;
   }
 
@@ -358,10 +367,14 @@ view: rldflat {
     type: string
     sql: ${wave_sid_label} ;;
     html:
-    <h1>
-    <p style="color: black; font-size:200%; text-align:center">Ipsos Marketing Funnel Chart - Google Pay vs Others</p>
-    </h1>
-    <p style="color: dimgrey; font-size:125%; text-align:center">Google Pay Tracking India Report - {{value}}</p>
+    <body>
+    <div style="position: fixed; top: 0px; width:100%; height: 55px;color: black; font-size:175%;text-align:center;overflow-y: hidden">
+        Ipsos Marketing Funnel Chart - Google Pay vs Others
+    </div>
+    <div style="position: fixed; top: 0px; width:100%; height: 30px;color: dimgrey; font-size:100%;text-align:center;overflow-y: hidden">
+        Google Pay Tracking India Report - {{value}}
+    </div>
+    </body>
     ;;
   }
 
@@ -371,10 +384,14 @@ view: rldflat {
     type: string
     sql: ${wave_sid_label} ;;
     html:
-    <h1>
-    <p style="color: black; font-size:200%; text-align:center">Staples: Barriers and Motivations</p>
-    </h1>
-    <p style="color: dimgrey; font-size:125%; text-align:center">Google Pay Tracking India Report - {{value}}</p>
+    <body>
+    <div style="position: fixed; top: 0px; width:100%; height: 55px;color: black; font-size:175%;text-align:center;overflow-y: hidden">
+        Staples: Barriers and Motivations
+    </div>
+    <div style="position: fixed; top: 0px; width:100%; height: 30px;color: dimgrey; font-size:100%;text-align:center;overflow-y: hidden">
+        Google Pay Tracking India Report - {{value}}
+    </div>
+    </body>
     ;;
   }
 
@@ -384,10 +401,14 @@ view: rldflat {
     type: string
     sql: ${wave_sid_label} ;;
     html:
-    <h1>
-    <p style="color: black; font-size:200%; text-align:center">Staples: Feature Trends</p>
-    </h1>
-    <p style="color: dimgrey; font-size:125%; text-align:center">Google Pay Tracking India Report - {{value}}</p>
+    <body>
+    <div style="position: fixed; top: 0px; width:100%; height: 55px;color: black; font-size:175%;text-align:center;overflow-y: hidden">
+        Staples: Feature Trends
+    </div>
+    <div style="position: fixed; top: 0px; width:100%; height: 30px;color: dimgrey; font-size:100%;text-align:center;overflow-y: hidden">
+        Google Pay Tracking India Report - {{value}}
+    </div>
+    </body>
     ;;
   }
 
@@ -397,10 +418,14 @@ view: rldflat {
     type: string
     sql: ${wave_sid_label} ;;
     html:
-    <h1>
-    <p style="color: black; font-size:200%; text-align:center">Staples: Usage & Personality</p>
-    </h1>
-    <p style="color: dimgrey; font-size:125%; text-align:center">Google Pay Tracking India Report - {{value}}</p>
+    <body>
+    <div style="position: fixed; top: 0px; width:100%; height: 55px;color: black; font-size:175%;text-align:center;overflow-y: hidden">
+        Staples: Usage & Personality
+    </div>
+    <div style="position: fixed; top: 0px; width:100%; height: 30px;color: dimgrey; font-size:100%;text-align:center;overflow-y: hidden">
+        Google Pay Tracking India Report - {{value}}
+    </div>
+    </body>
     ;;
   }
 
@@ -410,10 +435,14 @@ view: rldflat {
     type: string
     sql: ${wave_sid_label} ;;
     html:
-    <h1>
-    <p style="color: black; font-size:200%; text-align:center">Ipsos Trends: Brand Funnel</p>
-    </h1>
-    <p style="color: dimgrey; font-size:125%; text-align:center">Google Pay Tracking India Report - {{value}}</p>
+    <body>
+    <div style="position: fixed; top: 0px; width:100%; height: 55px;color: black; font-size:175%;text-align:center;overflow-y: hidden">
+        Ipsos Trends: Brand Funnel
+    </div>
+    <div style="position: fixed; top: 0px; width:100%; height: 30px;color: dimgrey; font-size:100%;text-align:center;overflow-y: hidden">
+        Google Pay Tracking India Report - {{value}}
+    </div>
+    </body>
     ;;
   }
 
@@ -423,22 +452,21 @@ view: rldflat {
     type: string
     sql: ${wave_sid_label} ;;
     html:
-    <h1 style="color: black; font-size:250%; text-align:center; font-family: Arial, Helvetica, sans-serif;">Google Pay Top Metrics Health Dashboard</h1>
-    <br>
-    </br>
-    <h2 style="color: dimgrey; font-size:100%; text-align:center;font-family: Arial, Helvetica, sans-serif;">Google Pay Tracking India Report - {{value}}</h2>
+    <body>
+    <div style="position: fixed; top: 0px; width:100%; height: 55px;color: black; font-size:175%;text-align:center;overflow-y: hidden">
+        Google Pay Top Metrics Health Dashboard
+    </div>
+    <div style="position: fixed; top: 0px; width:100%; height: 30px;color: dimgrey; font-size:100%;text-align:center;overflow-y: hidden">
+        Google Pay Tracking India Report - {{value}}
+    </div>
+    </body>
     ;;
   }
-  # <h1>
-  # <p style="color: black; font-size:200%; text-align:center">Google Pay Top Metrics Health Dashboard</p>
-  #   </h1>
-  #   <p style="color: dimgrey; font-size:125%; text-align:center">Google Pay Tracking India Report - {{value}}</p>
 
   dimension: wave_sid_percent_chart {
     label: "Wave (custom)"
     group_label: "Developer Fields (not for use)"
     type: string
-#     order_by_field: wave_date
     sql: ${TABLE}.WaveSID_Label ;;
   }
 
