@@ -153,6 +153,8 @@ view: rldeav {
     sql:
     CASE ${response_label}
     WHEN 'Google Pay' THEN 1
+    WHEN 'Gpay' THEN 1
+    WHEN 'GOOGLE PAY (SUB-SUBNET)' THEN 1
     WHEN 'Paytm' THEN 2
     WHEN 'PhonePe' THEN 3
     WHEN 'PayPal' THEN 4
@@ -160,11 +162,13 @@ view: rldeav {
     WHEN 'Mobikwik' THEN 6
     WHEN 'BHIM / UPI' THEN 7
     WHEN 'BHIM UPI' THEN 7
+    WHEN 'BHIM/UPI(NET)' THEN 7
     WHEN 'Airtel Payments Bank' THEN 8
     WHEN 'HDFC PayZapp' THEN 9
     WHEN 'WhatsApp Pay' THEN 10
     WHEN 'Jio' THEN 11
     WHEN 'JioMoney' THEN 11
+    WHEN 'JIO(NET)' THEN 11
     ELSE
     0
     END
