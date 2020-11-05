@@ -306,7 +306,7 @@ view: rldflat {
     <div style="position: fixed; top: 0px; width:100%; height: 55px;color: black; font-size:175%;text-align:center;overflow-y: hidden">
         Ipsos Trends: USAT
     </div>
-    <div style="position: fixed; top: 0px; width:100%; height: 30px;color: dimgrey; font-size:100%;text-align:center;overflow-y: hidden">
+    <div style="position: fixed; top: 0px; width:100%; height: 20px;color: dimgrey; font-size:100%;text-align:center;overflow-y: hidden">
         Google Pay Tracking India Report - {{value}}
     </div>
     </body>;;
@@ -322,7 +322,7 @@ view: rldflat {
     <div style="position: fixed; top: 0px; width:100%; height: 55px;color: black; font-size:175%;text-align:center;overflow-y: hidden">
         Ipsos Trends: Trust
     </div>
-    <div style="position: fixed; top: 0px; width:100%; height: 30px;color: dimgrey; font-size:100%;text-align:center;overflow-y: hidden">
+    <div style="position: fixed; top: 0px; width:100%; height: 20px;color: dimgrey; font-size:100%;text-align:center;overflow-y: hidden">
         Google Pay Tracking India Report - {{value}}
     </div>
     </body>;;
@@ -338,7 +338,7 @@ view: rldflat {
     <div style="position: fixed; top: 0px; width:100%; height: 55px;color: black; font-size:175%;text-align:center;overflow-y: hidden">
         Ipsos Trends: Feature Awareness - Places to Pay
     </div>
-    <div style="position: fixed; top: 0px; width:100%; height: 30px;color: dimgrey; font-size:100%;text-align:center;overflow-y: hidden">
+    <div style="position: fixed; top: 0px; width:100%; height: 20px;color: dimgrey; font-size:100%;text-align:center;overflow-y: hidden">
         Google Pay Tracking India Report - {{value}}
     </div>
     </body>;;
@@ -354,7 +354,7 @@ view: rldflat {
     <div style="position: fixed; top: 0px; width:100%; height: 55px;color: black; font-size:175%;text-align:center;overflow-y: hidden">
         Staples: Attributes
     </div>
-    <div style="position: fixed; top: 0px; width:100%; height: 30px;color: dimgrey; font-size:100%;text-align:center;overflow-y: hidden">
+    <div style="position: fixed; top: 0px; width:100%; height: 20px;color: dimgrey; font-size:100%;text-align:center;overflow-y: hidden">
         Google Pay Tracking India Report - {{value}}
     </div>
     </body>
@@ -371,7 +371,7 @@ view: rldflat {
     <div style="position: fixed; top: 0px; width:100%; height: 55px;color: black; font-size:175%;text-align:center;overflow-y: hidden">
         Ipsos Marketing Funnel Chart - Google Pay vs Others
     </div>
-    <div style="position: fixed; top: 0px; width:100%; height: 30px;color: dimgrey; font-size:100%;text-align:center;overflow-y: hidden">
+    <div style="position: fixed; top: 0px; width:100%; height: 20px;color: dimgrey; font-size:100%;text-align:center;overflow-y: hidden">
         Google Pay Tracking India Report - {{value}}
     </div>
     </body>
@@ -388,7 +388,7 @@ view: rldflat {
     <div style="position: fixed; top: 0px; width:100%; height: 55px;color: black; font-size:175%;text-align:center;overflow-y: hidden">
         Staples: Barriers and Motivations
     </div>
-    <div style="position: fixed; top: 0px; width:100%; height: 30px;color: dimgrey; font-size:100%;text-align:center;overflow-y: hidden">
+    <div style="position: fixed; top: 0px; width:100%; height: 20px;color: dimgrey; font-size:100%;text-align:center;overflow-y: hidden">
         Google Pay Tracking India Report - {{value}}
     </div>
     </body>
@@ -405,7 +405,7 @@ view: rldflat {
     <div style="position: fixed; top: 0px; width:100%; height: 55px;color: black; font-size:175%;text-align:center;overflow-y: hidden">
         Staples: Feature Trends
     </div>
-    <div style="position: fixed; top: 0px; width:100%; height: 30px;color: dimgrey; font-size:100%;text-align:center;overflow-y: hidden">
+    <div style="position: fixed; top: 0px; width:100%; height: 20px;color: dimgrey; font-size:100%;text-align:center;overflow-y: hidden">
         Google Pay Tracking India Report - {{value}}
     </div>
     </body>
@@ -422,7 +422,7 @@ view: rldflat {
     <div style="position: fixed; top: 0px; width:100%; height: 55px;color: black; font-size:175%;text-align:center;overflow-y: hidden">
         Staples: Usage & Personality
     </div>
-    <div style="position: fixed; top: 0px; width:100%; height: 30px;color: dimgrey; font-size:100%;text-align:center;overflow-y: hidden">
+    <div style="position: fixed; top: 0px; width:100%; height: 20px;color: dimgrey; font-size:100%;text-align:center;overflow-y: hidden">
         Google Pay Tracking India Report - {{value}}
     </div>
     </body>
@@ -439,7 +439,7 @@ view: rldflat {
     <div style="position: fixed; top: 0px; width:100%; height: 55px;color: black; font-size:175%;text-align:center;overflow-y: hidden">
         Ipsos Trends: Brand Funnel
     </div>
-    <div style="position: fixed; top: 0px; width:100%; height: 30px;color: dimgrey; font-size:100%;text-align:center;overflow-y: hidden">
+    <div style="position: fixed; top: 0px; width:100%; height: 20px;color: dimgrey; font-size:100%;text-align:center;overflow-y: hidden">
         Google Pay Tracking India Report - {{value}}
     </div>
     </body>
@@ -456,7 +456,7 @@ view: rldflat {
     <div style="position: fixed; top: 0px; width:100%; height: 55px;color: black; font-size:175%;text-align:center;overflow-y: hidden">
         Google Pay Top Metrics Health Dashboard
     </div>
-    <div style="position: fixed; top: 0px; width:100%; height: 30px;color: dimgrey; font-size:100%;text-align:center;overflow-y: hidden">
+    <div style="position: fixed; top: 0px; width:100%; height: 20px;color: dimgrey; font-size:100%;text-align:center;overflow-y: hidden">
         Google Pay Tracking India Report - {{value}}
     </div>
     </body>

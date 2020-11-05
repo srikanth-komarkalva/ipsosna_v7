@@ -23,7 +23,7 @@ view: bases {
 
   filter: gender {
     type: string
-    suggest_dimension: rldflat.resp_gender
+    # suggest_dimension: rldflat.resp_gender
   }
 
   dimension: wave_sid {

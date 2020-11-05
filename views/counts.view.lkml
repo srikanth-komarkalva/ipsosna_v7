@@ -1,4 +1,5 @@
 include: "rldflat.view.lkml"
+include: "bases.view.lkml"
 view: counts {
   derived_table: {
     datagroup_trigger: ipsosna_v7_default_datagroup
@@ -16,7 +17,7 @@ view: counts {
 
   filter: gender {
     type: string
-    suggest_dimension: rldflat.resp_gender
+    # suggest_dimension: rldflat.resp_gender
   }
 
   dimension: wave_sid {
