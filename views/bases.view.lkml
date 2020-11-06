@@ -1,6 +1,7 @@
 include: "counts.view.lkml"
 include: "rldflat.view.lkml"
 include: "rldeav_filter1.view.lkml"
+include: "wave_labels.view.lkml"
 view: bases {
   derived_table: {
     datagroup_trigger: ipsosna_v7_default_datagroup
@@ -35,6 +36,7 @@ view: bases {
 
   dimension: wave_sid_label {
     label: "Wave Label"
+    order_by_field: wave_labels.wave_date
     group_label: "Demographic Fields"
     type: string
     sql: ${TABLE}.WaveSID_Label ;;
