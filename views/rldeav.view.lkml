@@ -215,6 +215,8 @@ view: rldeav {
     html:
     {% if value == 'Google Pay' or value == 'Gpay' %}
          <p><img src="https://pay.google.com/about/static_kcs/images/logos/google-pay-logo.svg" height=50 width=50></p>
+      {% elsif value == 'NET: Google Pay [original and billfold logos]' %}
+        <p><img src="https://pay.google.com/about/static_kcs/images/logos/google-pay-logo.svg" height=50 width=50 ></p>
       {% elsif value == 'Amazon Pay' %}
         <p><img src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/032018/untitled-1_160.png" height=50 width=50 ></p>
       {% elsif value == 'BHIM UPI' or value == 'BHIM / UPI' %}
