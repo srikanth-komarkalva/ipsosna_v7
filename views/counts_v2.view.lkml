@@ -84,6 +84,20 @@ view: counts_v2 {
     ;;
   }
 
+  dimension: response_label_Gpay{
+    label: "Response Label"
+    description: "To be used for Gpay"
+    group_label: "Developer Fields (not for use)"
+    type: string
+    sql:
+    CASE ${response_label}
+    WHEN 'NET: Google Pay [original and billfold logos]' THEN 'Google Pay'
+    ELSE
+    ${response_label}
+    END
+    ;;
+  }
+
   dimension: response_label_order {
     group_label: "Developer Fields (not for use)"
     type: number
