@@ -2,9 +2,7 @@ include: "rldflat.view.lkml"
 include: "bases.view.lkml"
 view: counts {
   derived_table: {
-    datagroup_trigger: ipsosna_v7_default_datagroup
-    partition_keys: ["dummydate"]
-    cluster_keys: ["metricID"]
+
     sql: SELECT v.metricID, v.response_code, v.response_label,v.response_order,f.WaveSID,COUNT(DISTINCT v.respondent_serial) AS UnCt, SUM(f.wm3) AS WtCt,
         cast('2000-01-01' as date) as dummydate
         FROM GPay.RLDeav v

@@ -4,9 +4,7 @@ include: "rldeav_filter1.view.lkml"
 include: "wave_labels.view.lkml"
 view: bases {
   derived_table: {
-    datagroup_trigger: ipsosna_v7_default_datagroup
-    partition_keys: ["dummydate"]
-    cluster_keys: ["metricID"]
+
     sql: SELECT v.metricID, v.metric_code, v.metric_label, v.metric_order,f.WaveSID,
         (SELECT DISTINCT response_label FROM `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDResponses` resp
         INNER JOIN `mgcp-1192365-ipsos-gbht-srf617.GPay.RLDMetrics` metric ON resp.metricid= metric.metricid
